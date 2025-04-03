@@ -16,7 +16,7 @@ const ProgressBar = ({ answered, total }: ProgressBarProps) => {
         <span>{answered} von {total} beantwortet</span>
         <span>{percentage}% abgeschlossen</span>
       </div>
-      <Progress value={percentage} className="h-2 bg-gray-200" indicatorClassName="bg-fantasy-progress" />
+      <Progress value={percentage} className="h-2 bg-gray-200" />
     </div>
   );
 };

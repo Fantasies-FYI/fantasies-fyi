@@ -8,6 +8,7 @@ import Navigation from "@/components/Navigation";
 import SharingCode from "@/components/SharingCode";
 import PartnerCodeInput from "@/components/PartnerCodeInput";
 import ResultsView from "@/components/ResultsView";
+import { Button } from "@/components/ui/button";
 import { 
   Fantasy, 
   FantasyCategory, 
