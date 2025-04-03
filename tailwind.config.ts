@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,19 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+                // Fantasy Shared Hearts custom colors
+                fantasy: {
+                    interested: '#9b87f5',
+                    notInterested: '#ea384c',
+                    conditionally: '#0EA5E9',
+                    primary: '#D946EF',
+                    secondary: '#E5DEFF',
+                    accent: '#FEC6A1',
+                    background: '#FFDEE2',
+                    card: '#FFFFFF',
+                    progress: '#8B5CF6',
+                }
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +97,32 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+                'card-flip': {
+                    '0%': { transform: 'rotateY(0deg)' },
+                    '100%': { transform: 'rotateY(180deg)' }
+                },
+                'card-flip-back': {
+                    '0%': { transform: 'rotateY(180deg)' },
+                    '100%': { transform: 'rotateY(0deg)' }
+                },
+                'card-appear': {
+                    '0%': { 
+                        transform: 'translateY(20px)',
+                        opacity: '0'
+                    },
+                    '100%': { 
+                        transform: 'translateY(0)',
+                        opacity: '1'
+                    }
+                }
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+                'card-flip': 'card-flip 0.5s ease-out forwards',
+                'card-flip-back': 'card-flip-back 0.5s ease-out forwards',
+                'card-appear': 'card-appear 0.3s ease-out forwards'
 			}
 		}
 	},
