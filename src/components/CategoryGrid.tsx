@@ -2,6 +2,7 @@
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FantasyCategory } from "@/data/sampleFantasies";
+import { Progress } from "@/components/ui/progress";
 
 interface CategoryGridProps {
   categories: FantasyCategory[];
@@ -48,5 +49,3 @@ const CategoryGrid = ({
 };
 
 export default CategoryGrid;
-
-import { Progress } from "@/components/ui/progress";

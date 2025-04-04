@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import OnboardingForm from "@/components/OnboardingForm";
 import FantasyCard from "@/components/FantasyCard";
@@ -9,6 +8,7 @@ import InfoPage from "@/components/InfoPage";
 import SharingPage from "@/components/SharingPage";
 import ResultsView from "@/components/ResultsView";
 import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { 
   Fantasy, 
   FantasyCategory, 
@@ -104,13 +104,13 @@ const Index = () => {
   };
   
   // Handle fantasy answer selection
-  const handleAnswerSelection = (answer: AnswerType) => {
+  const handleAnswerSelection = (answer: AnswerType, fantasyId: number) => {
     if (resultsViewed) {
       toast.error("Du kannst deine Antworten nicht mehr ändern, nachdem du die Ergebnisse gesehen hast.");
       return;
     }
     
-    const currentFantasy = fantasies[currentFantasyIndex];
+    const currentFantasy = fantasies.find(f => f.id === fantasyId);
     
     if (currentFantasy) {
       // Save the answer
@@ -141,14 +141,6 @@ const Index = () => {
           };
           setCategoryProgress(newProgress);
         }
-      }
-      
-      // Move to next fantasy if available
-      if (currentFantasyIndex < fantasies.length - 1) {
-        setCurrentFantasyIndex(currentFantasyIndex + 1);
-      } else {
-        toast.success("Du hast alle Fantasien in dieser Kategorie beantwortet!");
-        setCurrentView("categories");
       }
     }
   };
@@ -294,30 +286,24 @@ const Index = () => {
             total={categoryProgress[activeCategory]?.total || fantasies.length}
           />
           
-          {fantasies.length > 0 && currentFantasyIndex < fantasies.length && (
-            <FantasyCard 
-              fantasy={fantasies[currentFantasyIndex]} 
-              currentAnswer={getUserAnswerForFantasy(fantasies[currentFantasyIndex].id)}
-              onAnswer={handleAnswerSelection}
-            />
-          )}
-          
-          <div className="flex justify-center mt-6 space-x-4">
-            <Button 
-              variant="outline" 
-              onClick={handlePreviousFantasy}
-              disabled={currentFantasyIndex <= 0}
-            >
-              Vorherige
-            </Button>
-            <Button 
-              variant="outline" 
-              onClick={handleNextFantasy}
-              disabled={currentFantasyIndex >= fantasies.length - 1}
-            >
-              Nächste
-            </Button>
-          </div>
+          <ScrollArea className="h-[calc(100vh-220px)] w-full mt-6">
+            <div className="w-full max-w-md mx-auto pb-10">
+              {fantasies.map((fantasy) => {
+                const currentAnswer = getUserAnswerForFantasy(fantasy.id);
+                const isAnswered = answers.some(a => a.fantasyId === fantasy.id);
+                
+                return (
+                  <FantasyCard 
+                    key={fantasy.id}
+                    fantasy={fantasy} 
+                    currentAnswer={currentAnswer}
+                    onAnswer={(answer) => handleAnswerSelection(answer, fantasy.id)}
+                    isAnswered={isAnswered}
+                  />
+                );
+              })}
+            </div>
+          </ScrollArea>
         </>
       )}
       
