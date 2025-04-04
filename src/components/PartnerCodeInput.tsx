@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
-import { decodePartnerCode, PartnerData, getUserAnswers } from "@/utils/storage";
+import { decodePartnerCode, PartnerData } from "@/utils/storage";
 
 interface PartnerCodeInputProps {
   onCodeProcessed: (partnerData: PartnerData) => void;
@@ -20,13 +20,6 @@ const PartnerCodeInput = ({ onCodeProcessed, onCancel }: PartnerCodeInputProps) 
       return;
     }
     
-    // Check if all questions are answered
-    const userAnswers = getUserAnswers();
-    if (userAnswers.length === 0) {
-      toast.error("Du musst zuerst Fragen beantworten, bevor du einen Partner-Code eingeben kannst");
-      return;
-    }
-
     setIsProcessing(true);
     try {
       const partnerData = decodePartnerCode(code);

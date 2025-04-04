@@ -3,6 +3,7 @@ import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FantasyCategory } from "@/data/sampleFantasies";
 import { Progress } from "@/components/ui/progress";
+import { Check } from "lucide-react";
 
 interface CategoryGridProps {
   categories: FantasyCategory[];
@@ -16,6 +17,14 @@ const CategoryGrid = ({
   onSelectCategory,
   categoryProgress
 }: CategoryGridProps) => {
+  // Calculate if all questions are answered
+  const allQuestionsAnswered = categories.every(
+    category => {
+      const progress = categoryProgress[category];
+      return progress && progress.answered === progress.total;
+    }
+  );
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-4xl mx-auto">
       {categories.map((category) => {
@@ -32,7 +41,12 @@ const CategoryGrid = ({
             onClick={() => onSelectCategory(category)}
           >
             <CardHeader className="pb-2">
-              <CardTitle className="text-lg">{category}</CardTitle>
+              <CardTitle className="text-lg flex items-center">
+                <span>{category}</span>
+                {isComplete && (
+                  <Check className="w-5 h-5 ml-2 text-green-500" />
+                )}
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="flex justify-between text-sm mb-2">
@@ -44,6 +58,14 @@ const CategoryGrid = ({
           </Card>
         );
       })}
+      
+      {allQuestionsAnswered && (
+        <div className="col-span-full mt-4 text-center">
+          <p className="text-green-600 font-medium">
+            Du hast alle Fragen beantwortet! Du kannst nun deine Ergebnisse teilen.
+          </p>
+        </div>
+      )}
     </div>
   );
 };

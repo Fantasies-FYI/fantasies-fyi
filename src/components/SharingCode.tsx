@@ -1,10 +1,10 @@
 
 import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
-import { generateSharingCode, getUserAnswers } from "@/utils/storage";
+import { generateSharingCode } from "@/utils/storage";
 
 interface SharingCodeProps {
   onClose: () => void;
@@ -12,17 +12,10 @@ interface SharingCodeProps {
 
 const SharingCode = ({ onClose }: SharingCodeProps) => {
   const [code, setCode] = useState("");
-  const [allQuestionsAnswered, setAllQuestionsAnswered] = useState(false);
   
   useEffect(() => {
-    const answers = getUserAnswers();
-    // Check if user has answered enough questions to generate a code
-    const hasEnoughAnswers = answers.length > 0;
-    setAllQuestionsAnswered(hasEnoughAnswers);
-    
-    if (hasEnoughAnswers) {
-      setCode(generateSharingCode());
-    }
+    // Generate the code when component mounts
+    setCode(generateSharingCode());
   }, []);
 
   const copyToClipboard = () => {
@@ -34,15 +27,6 @@ const SharingCode = ({ onClose }: SharingCodeProps) => {
         toast.error("Fehler beim Kopieren des Codes");
       });
   };
-
-  if (!allQuestionsAnswered) {
-    return (
-      <div className="text-center py-6">
-        <p className="mb-4">Du musst zuerst einige Fragen beantworten, bevor du einen Code generieren kannst.</p>
-        <Button onClick={onClose}>Zurück</Button>
-      </div>
-    );
-  }
 
   return (
     <div className="w-full">
