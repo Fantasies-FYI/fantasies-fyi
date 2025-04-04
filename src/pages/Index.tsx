@@ -3,10 +3,10 @@ import React, { useState, useEffect } from "react";
 import OnboardingForm from "@/components/OnboardingForm";
 import FantasyCard from "@/components/FantasyCard";
 import ProgressBar from "@/components/ProgressBar";
-import CategorySelector from "@/components/CategorySelector";
+import CategoryGrid from "@/components/CategoryGrid";
 import Navigation from "@/components/Navigation";
-import SharingCode from "@/components/SharingCode";
-import PartnerCodeInput from "@/components/PartnerCodeInput";
+import InfoPage from "@/components/InfoPage";
+import SharingPage from "@/components/SharingPage";
 import ResultsView from "@/components/ResultsView";
 import { Button } from "@/components/ui/button";
 import { 
@@ -26,13 +26,15 @@ import {
   getSharedInterests
 } from "@/utils/storage";
 import { toast } from "sonner";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Info, Share2 } from "lucide-react";
+
+type AppView = "categories" | "questions" | "sharing" | "info" | "results";
 
 const Index = () => {
   // State for user information and flow control
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<"answer" | "results">("answer");
+  const [currentView, setCurrentView] = useState<AppView>("categories");
   
   // Fantasy selection state
   const [fantasies, setFantasies] = useState<Fantasy[]>(sampleFantasies);
@@ -44,13 +46,10 @@ const Index = () => {
     [key in FantasyCategory]?: { answered: number; total: number };
   }>({});
   
-  // Modal states
-  const [showSharingCode, setShowSharingCode] = useState(false);
-  const [showPartnerCodeInput, setShowPartnerCodeInput] = useState(false);
-  
   // Partner data
   const [partnerData, setPartnerData] = useState<PartnerData | null>(null);
   const [sharedFantasies, setSharedFantasies] = useState<Fantasy[]>([]);
+  const [resultsViewed, setResultsViewed] = useState<boolean>(false);
   
   // Initialize application data
   useEffect(() => {
@@ -90,25 +89,14 @@ const Index = () => {
     });
     
     setCategoryProgress(progress);
-    
-    // Set default active category if none selected
-    if (uniqueCategories.length > 0 && !activeCategory) {
-      setActiveCategory(uniqueCategories[0]);
-    }
-    
     setIsLoading(false);
   }, []);
   
-  // Filter fantasies when active category changes
-  useEffect(() => {
-    if (activeCategory) {
-      const categoryFantasies = sampleFantasies.filter(
-        f => f.category === activeCategory
-      );
-      setFantasies(categoryFantasies);
-      setCurrentFantasyIndex(0);
-    }
-  }, [activeCategory]);
+  // Check if all questions are answered
+  const areAllQuestionsAnswered = () => {
+    const totalFantasies = sampleFantasies.length;
+    return answers.length === totalFantasies;
+  };
   
   // Handle onboarding completion
   const handleOnboardingComplete = (completedProfile: UserProfile) => {
@@ -117,6 +105,11 @@ const Index = () => {
   
   // Handle fantasy answer selection
   const handleAnswerSelection = (answer: AnswerType) => {
+    if (resultsViewed) {
+      toast.error("Du kannst deine Antworten nicht mehr ändern, nachdem du die Ergebnisse gesehen hast.");
+      return;
+    }
+    
     const currentFantasy = fantasies[currentFantasyIndex];
     
     if (currentFantasy) {
@@ -155,6 +148,7 @@ const Index = () => {
         setCurrentFantasyIndex(currentFantasyIndex + 1);
       } else {
         toast.success("Du hast alle Fantasien in dieser Kategorie beantwortet!");
+        setCurrentView("categories");
       }
     }
   };
@@ -162,6 +156,15 @@ const Index = () => {
   // Navigation handlers
   const handleSelectCategory = (category: FantasyCategory) => {
     setActiveCategory(category);
+    
+    // Filter fantasies when active category changes
+    const categoryFantasies = sampleFantasies.filter(
+      f => f.category === category
+    );
+    setFantasies(categoryFantasies);
+    setCurrentFantasyIndex(0);
+    
+    setCurrentView("questions");
   };
   
   const handlePreviousFantasy = () => {
@@ -176,27 +179,14 @@ const Index = () => {
     }
   };
   
-  const handleShowHome = () => {
-    setActiveTab("answer");
-    setShowSharingCode(false);
-    setShowPartnerCodeInput(false);
-  };
-  
-  const handleShowResults = () => {
-    setActiveTab("results");
-  };
-  
-  const handleGenerateCode = () => {
-    setShowSharingCode(true);
-  };
-  
-  const handleEnterPartnerCode = () => {
-    setShowPartnerCodeInput(true);
-  };
-  
   const handlePartnerCodeProcessed = (data: PartnerData) => {
+    if (!areAllQuestionsAnswered()) {
+      toast.error("Du musst zuerst alle Fragen beantworten, bevor du die Ergebnisse sehen kannst.");
+      setCurrentView("categories");
+      return;
+    }
+    
     setPartnerData(data);
-    setShowPartnerCodeInput(false);
     
     // Calculate shared interests
     const userAnswers = getUserAnswers();
@@ -206,8 +196,51 @@ const Index = () => {
     const shared = sampleFantasies.filter(fantasy => sharedIds.includes(fantasy.id));
     setSharedFantasies(shared);
     
+    // Mark results as viewed to prevent answer changes
+    setResultsViewed(true);
+    
     // Show results
-    setActiveTab("results");
+    setCurrentView("results");
+  };
+  
+  const renderNavigation = () => {
+    if (currentView === "categories") {
+      return (
+        <div className="w-full max-w-4xl mx-auto mb-6 flex justify-between items-center">
+          <h1 className="text-xl font-bold">Fantasy Shared Hearts</h1>
+          <div className="flex space-x-2">
+            <Button 
+              variant="outline" 
+              size="icon" 
+              onClick={() => setCurrentView("info")}
+              title="Information"
+            >
+              <Info className="h-4 w-4" />
+            </Button>
+            <Button 
+              variant="outline" 
+              size="icon" 
+              onClick={() => setCurrentView("sharing")}
+              title="Teilen"
+            >
+              <Share2 className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+      );
+    }
+    
+    return (
+      <div className="w-full max-w-4xl mx-auto mb-6 flex justify-between items-center">
+        <Button variant="ghost" onClick={() => setCurrentView("categories")}>
+          &larr; Zurück zur Übersicht
+        </Button>
+        {currentView === "questions" && activeCategory && (
+          <h2 className="text-lg font-semibold">{activeCategory}</h2>
+        )}
+        <div className="w-24"></div>
+      </div>
+    );
   };
   
   // Loading state
@@ -230,56 +263,36 @@ const Index = () => {
     );
   }
   
-  // Show sharing code modal if active
-  if (showSharingCode) {
-    return (
-      <div className="min-h-screen flex items-center justify-center p-4">
-        <SharingCode onClose={() => setShowSharingCode(false)} />
-      </div>
-    );
-  }
-  
-  // Show partner code input if active
-  if (showPartnerCodeInput) {
-    return (
-      <div className="min-h-screen flex items-center justify-center p-4">
-        <PartnerCodeInput 
-          onCodeProcessed={handlePartnerCodeProcessed} 
-          onCancel={() => setShowPartnerCodeInput(false)} 
-        />
-      </div>
-    );
-  }
-  
   return (
     <div className="min-h-screen p-4 pb-16">
-      <Navigation 
-        onHome={handleShowHome}
-        onShowResults={handleShowResults}
-        onGenerateCode={handleGenerateCode}
-        onEnterPartnerCode={handleEnterPartnerCode}
-      />
+      {renderNavigation()}
       
-      <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as "answer" | "results")}>
-        <TabsList className="w-full max-w-md mx-auto mb-6">
-          <TabsTrigger value="answer" className="flex-1">Fantasien beantworten</TabsTrigger>
-          <TabsTrigger value="results" className="flex-1">Ergebnisse anzeigen</TabsTrigger>
-        </TabsList>
-        
-        <TabsContent value="answer">
-          <CategorySelector 
+      {currentView === "categories" && (
+        <>
+          <h2 className="text-xl font-bold text-center mb-6">
+            Wähle eine Kategorie
+          </h2>
+          <CategoryGrid 
             categories={categories}
             activeCategory={activeCategory}
             onSelectCategory={handleSelectCategory}
             categoryProgress={categoryProgress}
           />
           
-          {activeCategory && (
-            <ProgressBar 
-              answered={categoryProgress[activeCategory]?.answered || 0}
-              total={categoryProgress[activeCategory]?.total || fantasies.length}
-            />
+          {!areAllQuestionsAnswered() && (
+            <div className="text-center mt-8">
+              <p className="mb-4">Bitte beantworte alle Fragen, um die Ergebnisse zu sehen.</p>
+            </div>
           )}
+        </>
+      )}
+      
+      {currentView === "questions" && activeCategory && (
+        <>
+          <ProgressBar 
+            answered={categoryProgress[activeCategory]?.answered || 0}
+            total={categoryProgress[activeCategory]?.total || fantasies.length}
+          />
           
           {fantasies.length > 0 && currentFantasyIndex < fantasies.length && (
             <FantasyCard 
@@ -305,29 +318,28 @@ const Index = () => {
               Nächste
             </Button>
           </div>
-        </TabsContent>
-        
-        <TabsContent value="results">
-          {partnerData ? (
-            <ResultsView 
-              sharedFantasies={sharedFantasies}
-              userAnswers={answers}
-              partnerAnswers={partnerData.answers}
-              partnerName={partnerData.profile.name}
-            />
-          ) : (
-            <div className="text-center p-8">
-              <h2 className="text-2xl font-bold mb-4">Keine Ergebnisse verfügbar</h2>
-              <p className="mb-4">
-                Du musst zuerst einen Partner-Code eingeben, um geteilte Fantasien zu sehen.
-              </p>
-              <Button onClick={handleEnterPartnerCode}>
-                Partner-Code eingeben
-              </Button>
-            </div>
-          )}
-        </TabsContent>
-      </Tabs>
+        </>
+      )}
+      
+      {currentView === "sharing" && (
+        <SharingPage 
+          onClose={() => setCurrentView("categories")} 
+          onPartnerCodeProcessed={handlePartnerCodeProcessed}
+        />
+      )}
+      
+      {currentView === "info" && (
+        <InfoPage onClose={() => setCurrentView("categories")} />
+      )}
+      
+      {currentView === "results" && partnerData && (
+        <ResultsView 
+          sharedFantasies={sharedFantasies}
+          userAnswers={answers}
+          partnerAnswers={partnerData.answers}
+          partnerName={partnerData.profile.name}
+        />
+      )}
     </div>
   );
 };

@@ -1,10 +1,9 @@
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
-import { decodePartnerCode, PartnerData } from "@/utils/storage";
+import { decodePartnerCode, PartnerData, getUserAnswers } from "@/utils/storage";
 
 interface PartnerCodeInputProps {
   onCodeProcessed: (partnerData: PartnerData) => void;
@@ -18,6 +17,13 @@ const PartnerCodeInput = ({ onCodeProcessed, onCancel }: PartnerCodeInputProps) 
   const processCode = () => {
     if (!code.trim()) {
       toast.error("Bitte gib einen Code ein");
+      return;
+    }
+    
+    // Check if all questions are answered
+    const userAnswers = getUserAnswers();
+    if (userAnswers.length === 0) {
+      toast.error("Du musst zuerst Fragen beantworten, bevor du einen Partner-Code eingeben kannst");
       return;
     }
 
@@ -39,30 +45,24 @@ const PartnerCodeInput = ({ onCodeProcessed, onCancel }: PartnerCodeInputProps) 
   };
 
   return (
-    <Card className="w-full max-w-md mx-auto">
-      <CardHeader>
-        <CardTitle>Partner-Code eingeben</CardTitle>
-        <CardDescription>
+    <div className="w-full">
+      <div className="mb-4">
+        <p className="mb-4">
           Füge den Code ein, den du von deinem Partner erhalten hast, um eure gemeinsamen Interessen zu sehen.
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
+        </p>
         <Input
           value={code}
           onChange={(e) => setCode(e.target.value)}
           placeholder="Partner-Code hier einfügen"
-          className="font-mono"
+          className="font-mono mb-4"
         />
-      </CardContent>
-      <CardFooter className="flex justify-between">
-        <Button variant="outline" onClick={onCancel}>
-          Abbrechen
-        </Button>
+      </div>
+      <div className="flex justify-center">
         <Button onClick={processCode} disabled={isProcessing}>
           {isProcessing ? "Verarbeitung..." : "Code verarbeiten"}
         </Button>
-      </CardFooter>
-    </Card>
+      </div>
+    </div>
   );
 };
 

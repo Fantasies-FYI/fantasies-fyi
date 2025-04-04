@@ -1,17 +1,29 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
-import { generateSharingCode } from "@/utils/storage";
+import { generateSharingCode, getUserAnswers } from "@/utils/storage";
 
 interface SharingCodeProps {
   onClose: () => void;
 }
 
 const SharingCode = ({ onClose }: SharingCodeProps) => {
-  const [code, setCode] = useState(generateSharingCode());
+  const [code, setCode] = useState("");
+  const [allQuestionsAnswered, setAllQuestionsAnswered] = useState(false);
+  
+  useEffect(() => {
+    const answers = getUserAnswers();
+    // Check if user has answered enough questions to generate a code
+    const hasEnoughAnswers = answers.length > 0;
+    setAllQuestionsAnswered(hasEnoughAnswers);
+    
+    if (hasEnoughAnswers) {
+      setCode(generateSharingCode());
+    }
+  }, []);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(code)
@@ -23,21 +35,27 @@ const SharingCode = ({ onClose }: SharingCodeProps) => {
       });
   };
 
+  if (!allQuestionsAnswered) {
+    return (
+      <div className="text-center py-6">
+        <p className="mb-4">Du musst zuerst einige Fragen beantworten, bevor du einen Code generieren kannst.</p>
+        <Button onClick={onClose}>Zurück</Button>
+      </div>
+    );
+  }
+
   return (
-    <Card className="w-full max-w-md mx-auto">
-      <CardHeader>
-        <CardTitle>Teile deinen Code</CardTitle>
-        <CardDescription>
+    <div className="w-full">
+      <CardContent className="p-0">
+        <p className="mb-4">
           Dies ist dein einzigartiger Code, den du mit deinem Partner teilen kannst.
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
+        </p>
         <Input
           value={code}
           readOnly
-          className="font-mono text-xs"
+          className="font-mono text-xs mb-4"
         />
-        <div className="mt-4 text-sm">
+        <div className="text-sm">
           <p>
             Dein Partner benötigt diesen Code, um eure gemeinsamen Fantasien 
             zu sehen. Wie kannst du diesen teilen:
@@ -48,15 +66,12 @@ const SharingCode = ({ onClose }: SharingCodeProps) => {
           </ul>
         </div>
       </CardContent>
-      <CardFooter className="flex justify-between">
-        <Button variant="outline" onClick={onClose}>
-          Zurück
-        </Button>
+      <div className="flex justify-center mt-6">
         <Button onClick={copyToClipboard}>
           Code kopieren
         </Button>
-      </CardFooter>
-    </Card>
+      </div>
+    </div>
   );
 };
 
