@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import OnboardingForm from "@/components/OnboardingForm";
 import FantasyCard from "@/components/FantasyCard";
@@ -9,6 +8,8 @@ import InfoPage from "@/components/InfoPage";
 import SharingPage from "@/components/SharingPage";
 import ResultsView from "@/components/ResultsView";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Button } from "@/components/ui/button";
+import { Info, Share2 } from "lucide-react";
 import { 
   Fantasy, 
   FantasyCategory, 
