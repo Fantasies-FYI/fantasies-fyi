@@ -6,12 +6,6 @@ export type FantasyCategory =
   | "Positionen"
   | "Hilfsmittel";
 
-export type CategoryInfo = {
-  name: FantasyCategory;
-  color: string;
-  image: string;
-};
-
 export type AnswerType = "interested" | "notInterested" | "conditionally" | null;
 
 export interface Fantasy {
@@ -35,35 +29,6 @@ export interface UserProfile {
   partnerName: string;
   completedOnboarding: boolean;
 }
-
-// Category information with colors and images
-export const categoryInfo: CategoryInfo[] = [
-  {
-    name: "Romantische Fantasien",
-    color: "#D946EF", // Magenta Pink
-    image: "/images/romantic.jpg"
-  },
-  {
-    name: "Rollenspiele",
-    color: "#8B5CF6", // Vivid Purple
-    image: "/images/roleplay.jpg"
-  },
-  {
-    name: "Orte",
-    color: "#0EA5E9", // Ocean Blue
-    image: "/images/places.jpg"
-  },
-  {
-    name: "Positionen",
-    color: "#F97316", // Bright Orange
-    image: "/images/positions.jpg"
-  },
-  {
-    name: "Hilfsmittel",
-    color: "#10B981", // Emerald Green
-    image: "/images/tools.jpg"
-  }
-];
 
 // Sample fantasies for development purposes
 const sampleFantasies: Fantasy[] = [
