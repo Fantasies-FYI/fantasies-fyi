@@ -1,13 +1,13 @@
+
 import React, { useState, useEffect } from "react";
 import OnboardingForm from "@/components/OnboardingForm";
 import FantasyCard from "@/components/FantasyCard";
 import ProgressBar from "@/components/ProgressBar";
 import CategoryGrid from "@/components/CategoryGrid";
-import Navigation from "@/components/Navigation";
+import AppMenu from "@/components/AppMenu";
 import InfoPage from "@/components/InfoPage";
 import SharingPage from "@/components/SharingPage";
 import ResultsView from "@/components/ResultsView";
-import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { 
   Fantasy, 
@@ -26,7 +26,6 @@ import {
   getSharedInterests
 } from "@/utils/storage";
 import { toast } from "sonner";
-import { Info, Share2 } from "lucide-react";
 
 type AppView = "categories" | "questions" | "sharing" | "info" | "results";
 
@@ -238,9 +237,9 @@ const Index = () => {
   // Loading state
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Lade Fantasy Shared Hearts...</h1>
+          <h1 className="text-2xl font-bold mb-4 text-foreground">Lade Fantasy Shared Hearts...</h1>
         </div>
       </div>
     );
@@ -249,19 +248,25 @@ const Index = () => {
   // Onboarding for new users
   if (!profile || !profile.completedOnboarding) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-4">
+      <div className="min-h-screen flex items-center justify-center p-4 bg-background">
         <OnboardingForm onComplete={handleOnboardingComplete} />
       </div>
     );
   }
   
   return (
-    <div className="min-h-screen p-4 pb-16">
-      {renderNavigation()}
+    <div className="min-h-screen p-4 pb-16 bg-background">
+      <AppMenu 
+        currentView={currentView}
+        onCategoryView={() => setCurrentView("categories")}
+        onInfoView={() => setCurrentView("info")}
+        onSharingView={() => setCurrentView("sharing")}
+        title={activeCategory || undefined}
+      />
       
       {currentView === "categories" && (
         <>
-          <h2 className="text-xl font-bold text-center mb-6">
+          <h2 className="text-xl font-bold text-center mb-6 text-foreground">
             Wähle eine Kategorie
           </h2>
           <CategoryGrid 
@@ -273,7 +278,7 @@ const Index = () => {
           
           {!areAllQuestionsAnswered() && (
             <div className="text-center mt-8">
-              <p className="mb-4">Bitte beantworte alle Fragen, um die Ergebnisse zu sehen.</p>
+              <p className="mb-4 text-muted-foreground">Bitte beantworte alle Fragen, um die Ergebnisse zu sehen.</p>
             </div>
           )}
         </>
@@ -287,19 +292,20 @@ const Index = () => {
           />
           
           <ScrollArea className="h-[calc(100vh-220px)] w-full mt-6">
-            <div className="w-full max-w-md mx-auto pb-10">
-              {fantasies.map((fantasy) => {
+            <div className="w-full max-w-md mx-auto pb-10 space-y-6">
+              {fantasies.map((fantasy, index) => {
                 const currentAnswer = getUserAnswerForFantasy(fantasy.id);
                 const isAnswered = answers.some(a => a.fantasyId === fantasy.id);
                 
                 return (
-                  <FantasyCard 
-                    key={fantasy.id}
-                    fantasy={fantasy} 
-                    currentAnswer={currentAnswer}
-                    onAnswer={(answer) => handleAnswerSelection(answer, fantasy.id)}
-                    isAnswered={isAnswered}
-                  />
+                  <div key={fantasy.id} className={`animate-card-appear ${isAnswered ? 'fantasy-card-answered' : ''}`} style={{animationDelay: `${index * 0.1}s`}}>
+                    <FantasyCard 
+                      fantasy={fantasy} 
+                      currentAnswer={currentAnswer}
+                      onAnswer={(answer) => handleAnswerSelection(answer, fantasy.id)}
+                      isAnswered={isAnswered}
+                    />
+                  </div>
                 );
               })}
             </div>
@@ -311,6 +317,7 @@ const Index = () => {
         <SharingPage 
           onClose={() => setCurrentView("categories")} 
           onPartnerCodeProcessed={handlePartnerCodeProcessed}
+          allQuestionsAnswered={areAllQuestionsAnswered()}
         />
       )}
       
