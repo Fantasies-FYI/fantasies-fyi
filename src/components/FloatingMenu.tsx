@@ -22,36 +22,47 @@ const FloatingMenu = ({
     <div className="fixed bottom-4 left-0 right-0 px-4 z-50">
       <div className="bg-gray-900/80 backdrop-blur-md rounded-full p-2 flex justify-between items-center shadow-xl max-w-md mx-auto">
         {showBackButton ? (
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            onClick={onBackClick}
-            className="text-white hover:bg-gray-800/60 rounded-full"
-          >
-            <ArrowLeft className="h-5 w-5 mr-1" />
-            <span>Zurück zur Übersicht</span>
-          </Button>
+          <div className="flex justify-between w-full">
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={onBackClick}
+              className="text-white hover:bg-gray-800/60 rounded-full"
+            >
+              <ArrowLeft className="h-5 w-5 mr-1" />
+              <span>Back to Overview</span>
+            </Button>
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={onInfoClick}
+              className="text-white hover:bg-gray-800/60 rounded-full"
+              title="Help"
+            >
+              <Info className="h-5 w-5" />
+            </Button>
+          </div>
         ) : (
           <div className="flex gap-2">
             <Button 
               variant="ghost" 
               size={inCategoryView ? "icon" : "sm"} 
-              onClick={onInfoClick}
+              onClick={onShareClick}
               className="text-white hover:bg-gray-800/60 rounded-full"
-              title="Information"
+              title="Share"
             >
-              <Info className="h-5 w-5" />
-              {!inCategoryView && <span className="ml-1">Help</span>}
+              <Share2 className="h-5 w-5" />
+              {!inCategoryView && <span className="ml-1">Share</span>}
             </Button>
             <Button 
               variant="ghost" 
               size={inCategoryView ? "icon" : "sm"} 
-              onClick={onShareClick}
+              onClick={onInfoClick}
               className="text-white hover:bg-gray-800/60 rounded-full"
-              title="Teilen"
+              title="Help"
             >
-              <Share2 className="h-5 w-5" />
-              {!inCategoryView && <span className="ml-1">Share</span>}
+              <Info className="h-5 w-5" />
+              {!inCategoryView && <span className="ml-1">Help</span>}
             </Button>
           </div>
         )}

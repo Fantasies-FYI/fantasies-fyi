@@ -26,12 +26,12 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
   
   const handleNext = () => {
     if (step === 1 && (!profile.name || !profile.gender)) {
-      toast.error("Bitte fülle alle Felder aus");
+      toast.error("Please fill out all fields");
       return;
     }
     
     if (step === 2 && (!profile.ageRange || !profile.partnerName)) {
-      toast.error("Bitte fülle alle Felder aus");
+      toast.error("Please fill out all fields");
       return;
     }
     
@@ -53,28 +53,28 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
   const renderStep1 = () => (
     <CardContent className="space-y-4">
       <div className="space-y-2">
-        <Label htmlFor="name">Dein Name</Label>
+        <Label htmlFor="name">Your Name</Label>
         <Input
           id="name"
-          placeholder="Name eingeben"
+          placeholder="Enter name"
           value={profile.name}
           onChange={(e) => setProfile({ ...profile, name: e.target.value })}
         />
       </div>
       
       <div className="space-y-2">
-        <Label>Geschlecht</Label>
+        <Label>Gender</Label>
         <RadioGroup
           value={profile.gender}
           onValueChange={(value) => setProfile({ ...profile, gender: value as "male" | "female" })}
         >
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="male" id="male" />
-            <Label htmlFor="male">Männlich</Label>
+            <Label htmlFor="male">Male</Label>
           </div>
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="female" id="female" />
-            <Label htmlFor="female">Weiblich</Label>
+            <Label htmlFor="female">Female</Label>
           </div>
         </RadioGroup>
       </div>
@@ -84,7 +84,7 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
   const renderStep2 = () => (
     <CardContent className="space-y-4">
       <div className="space-y-2">
-        <Label htmlFor="age-range">Altersbereich</Label>
+        <Label htmlFor="age-range">Age Range</Label>
         <Select
           value={profile.ageRange}
           onValueChange={(value) => 
@@ -95,7 +95,7 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
           }
         >
           <SelectTrigger id="age-range">
-            <SelectValue placeholder="Wähle deinen Altersbereich" />
+            <SelectValue placeholder="Choose your age range" />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="18-22">18-22</SelectItem>
@@ -103,16 +103,16 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
             <SelectItem value="29-35">29-35</SelectItem>
             <SelectItem value="36-45">36-45</SelectItem>
             <SelectItem value="46-55">46-55</SelectItem>
-            <SelectItem value="over55">über 55</SelectItem>
+            <SelectItem value="over55">Over 55</SelectItem>
           </SelectContent>
         </Select>
       </div>
       
       <div className="space-y-2">
-        <Label htmlFor="partner-name">Name des Partners</Label>
+        <Label htmlFor="partner-name">Partner's Name</Label>
         <Input
           id="partner-name"
-          placeholder="Name des Partners eingeben"
+          placeholder="Enter partner's name"
           value={profile.partnerName}
           onChange={(e) => setProfile({ ...profile, partnerName: e.target.value })}
         />
@@ -123,31 +123,31 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
   const renderStep3 = () => (
     <CardContent className="space-y-4">
       <div className="text-center space-y-4">
-        <h3 className="text-lg font-medium">Wie diese App funktioniert</h3>
+        <h3 className="text-lg font-medium">How This App Works</h3>
         <p>
-          Du wirst eine Reihe von Fantasien sehen und kannst für jede wählen, ob du
-          interessiert, bedingt interessiert oder nicht interessiert bist.
+          You will see a series of fantasies and can choose for each whether you are
+          interested, conditionally interested, or not interested.
         </p>
         <p>
-          Deine Antworten werden sicher und privat auf deinem Gerät gespeichert.
-          Nach dem Beantworten kannst du einen Code generieren, den du mit deinem
-          Partner teilen kannst.
+          Your answers are securely and privately stored on your device.
+          After answering, you can generate a code to share with your
+          partner.
         </p>
         <p>
-          Wenn ihr beide eure Antworten geteilt habt, zeigt die App nur die
-          Fantasien an, bei denen ihr beide Interesse gezeigt habt.
+          When both of you have shared your answers, the app only shows
+          fantasies where both of you have shown interest.
         </p>
         
         <div className="bg-muted p-4 rounded-lg mt-4">
-          <h4 className="font-medium mb-2">Wichtige Begriffe</h4>
+          <h4 className="font-medium mb-2">Answer Options</h4>
           <p className="text-sm mb-2">
-            <span className="font-bold">Interessiert:</span> Du hättest Freude daran, diese Fantasie zu erleben.
+            <span className="font-bold">Yes:</span> This sounds fun!
           </p>
           <p className="text-sm mb-2">
-            <span className="font-bold">Bedingt interessiert:</span> Du wärst unter bestimmten Umständen daran interessiert.
+            <span className="font-bold">Maybe:</span> If my partner is interested.
           </p>
           <p className="text-sm">
-            <span className="font-bold">Nicht interessiert:</span> Du möchtest diese Fantasie nicht erleben.
+            <span className="font-bold">No:</span> I am not interested.
           </p>
         </div>
       </div>
@@ -157,9 +157,9 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
   return (
     <Card className="w-full max-w-md mx-auto">
       <CardHeader>
-        <CardTitle>Willkommen bei Fantasy Shared Hearts</CardTitle>
+        <CardTitle>Welcome to Fantasy Shared Hearts</CardTitle>
         <CardDescription>
-          Schritt {step} von 3: {step === 1 ? "Persönliche Informationen" : step === 2 ? "Weitere Details" : "Einführung"}
+          Step {step} of 3: {step === 1 ? "Personal Information" : step === 2 ? "More Details" : "Introduction"}
         </CardDescription>
       </CardHeader>
       
@@ -169,10 +169,10 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
       
       <CardFooter className="flex justify-between">
         <Button variant="outline" onClick={handlePrevious} disabled={step === 1}>
-          Zurück
+          Back
         </Button>
         <Button onClick={handleNext}>
-          {step < 3 ? "Weiter" : "Starten"}
+          {step < 3 ? "Next" : "Start"}
         </Button>
       </CardFooter>
     </Card>

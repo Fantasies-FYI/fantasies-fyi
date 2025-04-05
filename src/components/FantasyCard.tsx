@@ -16,7 +16,7 @@ const FantasyCard = ({ fantasy, currentAnswer, onAnswer, isAnswered }: FantasyCa
   const profile = getUserProfile();
   
   if (!profile) {
-    return <div>Benutzerprofil nicht gefunden</div>;
+    return <div>User profile not found</div>;
   }
   
   const gender = profile.gender;
@@ -44,7 +44,7 @@ const FantasyCard = ({ fantasy, currentAnswer, onAnswer, isAnswered }: FantasyCa
             }`}
             onClick={() => onAnswer("interested")}
           >
-            Interessiert
+            Yes
           </Button>
           <Button 
             className={`fantasy-button-conditionally ${
@@ -54,7 +54,7 @@ const FantasyCard = ({ fantasy, currentAnswer, onAnswer, isAnswered }: FantasyCa
             }`}
             onClick={() => onAnswer("conditionally")}
           >
-            Bedingt
+            Maybe
           </Button>
           <Button 
             className={`fantasy-button-not-interested ${
@@ -64,7 +64,7 @@ const FantasyCard = ({ fantasy, currentAnswer, onAnswer, isAnswered }: FantasyCa
             }`}
             onClick={() => onAnswer("notInterested")}
           >
-            Kein Interesse
+            No
           </Button>
         </div>
       </CardFooter>
