@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import OnboardingForm from "@/components/OnboardingForm";
 import FantasyCard from "@/components/FantasyCard";
@@ -192,6 +193,27 @@ const Index = () => {
     // Show results
     setCurrentView("results");
   };
+
+  const handleResetAnswers = () => {
+    setAnswers([]);
+    
+    // Reset category progress
+    const resetProgress: {
+      [key in FantasyCategory]?: { answered: number; total: number };
+    } = {};
+    
+    categories.forEach(category => {
+      const categoryFantasies = sampleFantasies.filter(f => f.category === category);
+      resetProgress[category] = {
+        answered: 0,
+        total: categoryFantasies.length
+      };
+    });
+    
+    setCategoryProgress(resetProgress);
+    setResultsViewed(false);
+    setCurrentView("categories");
+  };
   
   // Loading state
   if (isLoading) {
@@ -214,9 +236,9 @@ const Index = () => {
   }
   
   return (
-    <div className="min-h-screen p-4 pb-20">
+    <div className="min-h-screen pb-24">
       {currentView === "categories" && (
-        <>
+        <div className="p-4">
           <h2 className="text-xl font-bold text-center mb-6">
             Wähle eine Kategorie
           </h2>
@@ -232,56 +254,84 @@ const Index = () => {
               <p className="mb-4">Bitte beantworte alle Fragen, um die Ergebnisse zu sehen.</p>
             </div>
           )}
-        </>
+          
+          <FloatingMenu 
+            onInfoClick={() => setCurrentView("info")}
+            onShareClick={() => setCurrentView("sharing")}
+            inCategoryView={false}
+          />
+        </div>
       )}
       
       {currentView === "questions" && activeCategory && (
-        <ScrollArea className="h-[calc(100vh-100px)] w-full">
-          <div className="w-full max-w-md mx-auto pb-24">
-            {fantasies.map((fantasy) => {
-              const currentAnswer = getUserAnswerForFantasy(fantasy.id);
-              const isAnswered = answers.some(a => a.fantasyId === fantasy.id);
-              
-              return (
-                <FantasyCard 
-                  key={fantasy.id}
-                  fantasy={fantasy} 
-                  currentAnswer={currentAnswer}
-                  onAnswer={(answer) => handleAnswerSelection(answer, fantasy.id)}
-                  isAnswered={isAnswered}
-                />
-              );
-            })}
-          </div>
-        </ScrollArea>
+        <div className="h-full">
+          <ScrollArea className="h-[calc(100vh-16px)]">
+            <div className="w-full max-w-md mx-auto p-4 pb-28">
+              {fantasies.map((fantasy) => {
+                const currentAnswer = getUserAnswerForFantasy(fantasy.id);
+                const isAnswered = answers.some(a => a.fantasyId === fantasy.id);
+                
+                return (
+                  <FantasyCard 
+                    key={fantasy.id}
+                    fantasy={fantasy} 
+                    currentAnswer={currentAnswer}
+                    onAnswer={(answer) => handleAnswerSelection(answer, fantasy.id)}
+                    isAnswered={isAnswered}
+                  />
+                );
+              })}
+            </div>
+          </ScrollArea>
+          
+          <FloatingMenu 
+            showBackButton={true}
+            onInfoClick={() => setCurrentView("info")}
+            onShareClick={() => setCurrentView("sharing")}
+            onBackClick={() => setCurrentView("categories")}
+            inCategoryView={true}
+          />
+        </div>
       )}
       
       {currentView === "sharing" && (
-        <SharingPage 
-          onClose={() => setCurrentView("categories")} 
-          onPartnerCodeProcessed={handlePartnerCodeProcessed}
-        />
+        <div className="p-4">
+          <SharingPage 
+            onClose={() => setCurrentView("categories")} 
+            onPartnerCodeProcessed={handlePartnerCodeProcessed}
+            setResultsViewed={setResultsViewed}
+            resultsViewed={resultsViewed}
+          />
+        </div>
       )}
       
       {currentView === "info" && (
-        <InfoPage onClose={() => setCurrentView("categories")} />
+        <div className="p-4">
+          <InfoPage 
+            onClose={() => setCurrentView("categories")} 
+            onReset={handleResetAnswers}
+          />
+        </div>
       )}
       
       {currentView === "results" && partnerData && (
-        <ResultsView 
-          sharedFantasies={sharedFantasies}
-          userAnswers={answers}
-          partnerAnswers={partnerData.answers}
-          partnerName={partnerData.profile.name}
-        />
+        <div className="p-4 pb-24">
+          <ResultsView 
+            sharedFantasies={sharedFantasies}
+            userAnswers={answers}
+            partnerAnswers={partnerData.answers}
+            partnerName={partnerData.profile.name}
+          />
+          
+          <FloatingMenu 
+            showBackButton={true}
+            onInfoClick={() => setCurrentView("info")}
+            onShareClick={() => setCurrentView("sharing")}
+            onBackClick={() => setCurrentView("categories")}
+            inCategoryView={true}
+          />
+        </div>
       )}
-      
-      <FloatingMenu 
-        showBackButton={currentView === "questions"}
-        onInfoClick={() => setCurrentView("info")}
-        onShareClick={() => setCurrentView("sharing")}
-        onBackClick={() => setCurrentView("categories")}
-      />
     </div>
   );
 };
