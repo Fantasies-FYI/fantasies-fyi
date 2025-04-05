@@ -3,11 +3,10 @@ import OnboardingForm from "@/components/OnboardingForm";
 import FantasyCard from "@/components/FantasyCard";
 import ProgressBar from "@/components/ProgressBar";
 import CategoryGrid from "@/components/CategoryGrid";
-import Navigation from "@/components/Navigation";
+import FloatingMenu from "@/components/FloatingMenu";
 import InfoPage from "@/components/InfoPage";
 import SharingPage from "@/components/SharingPage";
 import ResultsView from "@/components/ResultsView";
-import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { 
   Fantasy, 
@@ -26,7 +25,6 @@ import {
   getSharedInterests
 } from "@/utils/storage";
 import { toast } from "sonner";
-import { Info, Share2 } from "lucide-react";
 
 type AppView = "categories" | "questions" | "sharing" | "info" | "results";
 
@@ -195,46 +193,6 @@ const Index = () => {
     setCurrentView("results");
   };
   
-  const renderNavigation = () => {
-    if (currentView === "categories") {
-      return (
-        <div className="w-full max-w-4xl mx-auto mb-6 flex justify-between items-center">
-          <h1 className="text-xl font-bold">Fantasy Shared Hearts</h1>
-          <div className="flex space-x-2">
-            <Button 
-              variant="outline" 
-              size="icon" 
-              onClick={() => setCurrentView("info")}
-              title="Information"
-            >
-              <Info className="h-4 w-4" />
-            </Button>
-            <Button 
-              variant="outline" 
-              size="icon" 
-              onClick={() => setCurrentView("sharing")}
-              title="Teilen"
-            >
-              <Share2 className="h-4 w-4" />
-            </Button>
-          </div>
-        </div>
-      );
-    }
-    
-    return (
-      <div className="w-full max-w-4xl mx-auto mb-6 flex justify-between items-center">
-        <Button variant="ghost" onClick={() => setCurrentView("categories")}>
-          &larr; Zurück zur Übersicht
-        </Button>
-        {currentView === "questions" && activeCategory && (
-          <h2 className="text-lg font-semibold">{activeCategory}</h2>
-        )}
-        <div className="w-24"></div>
-      </div>
-    );
-  };
-  
   // Loading state
   if (isLoading) {
     return (
@@ -256,9 +214,7 @@ const Index = () => {
   }
   
   return (
-    <div className="min-h-screen p-4 pb-16">
-      {renderNavigation()}
-      
+    <div className="min-h-screen p-4 pb-20">
       {currentView === "categories" && (
         <>
           <h2 className="text-xl font-bold text-center mb-6">
@@ -280,31 +236,24 @@ const Index = () => {
       )}
       
       {currentView === "questions" && activeCategory && (
-        <>
-          <ProgressBar 
-            answered={categoryProgress[activeCategory]?.answered || 0}
-            total={categoryProgress[activeCategory]?.total || fantasies.length}
-          />
-          
-          <ScrollArea className="h-[calc(100vh-220px)] w-full mt-6">
-            <div className="w-full max-w-md mx-auto pb-10">
-              {fantasies.map((fantasy) => {
-                const currentAnswer = getUserAnswerForFantasy(fantasy.id);
-                const isAnswered = answers.some(a => a.fantasyId === fantasy.id);
-                
-                return (
-                  <FantasyCard 
-                    key={fantasy.id}
-                    fantasy={fantasy} 
-                    currentAnswer={currentAnswer}
-                    onAnswer={(answer) => handleAnswerSelection(answer, fantasy.id)}
-                    isAnswered={isAnswered}
-                  />
-                );
-              })}
-            </div>
-          </ScrollArea>
-        </>
+        <ScrollArea className="h-[calc(100vh-100px)] w-full">
+          <div className="w-full max-w-md mx-auto pb-24">
+            {fantasies.map((fantasy) => {
+              const currentAnswer = getUserAnswerForFantasy(fantasy.id);
+              const isAnswered = answers.some(a => a.fantasyId === fantasy.id);
+              
+              return (
+                <FantasyCard 
+                  key={fantasy.id}
+                  fantasy={fantasy} 
+                  currentAnswer={currentAnswer}
+                  onAnswer={(answer) => handleAnswerSelection(answer, fantasy.id)}
+                  isAnswered={isAnswered}
+                />
+              );
+            })}
+          </div>
+        </ScrollArea>
       )}
       
       {currentView === "sharing" && (
@@ -326,6 +275,13 @@ const Index = () => {
           partnerName={partnerData.profile.name}
         />
       )}
+      
+      <FloatingMenu 
+        showBackButton={currentView === "questions"}
+        onInfoClick={() => setCurrentView("info")}
+        onShareClick={() => setCurrentView("sharing")}
+        onBackClick={() => setCurrentView("categories")}
+      />
     </div>
   );
 };

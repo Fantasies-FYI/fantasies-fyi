@@ -5,9 +5,10 @@ import { Progress } from "@/components/ui/progress";
 interface ProgressBarProps {
   answered: number;
   total: number;
+  color?: string;
 }
 
-const ProgressBar = ({ answered, total }: ProgressBarProps) => {
+const ProgressBar = ({ answered, total, color }: ProgressBarProps) => {
   const percentage = total > 0 ? Math.round((answered / total) * 100) : 0;
 
   return (
@@ -16,7 +17,11 @@ const ProgressBar = ({ answered, total }: ProgressBarProps) => {
         <span>{answered} von {total} beantwortet</span>
         <span>{percentage}% abgeschlossen</span>
       </div>
-      <Progress value={percentage} className="h-2 bg-gray-200" />
+      <Progress 
+        value={percentage} 
+        className="h-2 bg-gray-200" 
+        indicatorClassName={color ? `bg-[${color}]` : undefined}
+      />
     </div>
   );
 };
