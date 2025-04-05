@@ -21,41 +21,41 @@ const ResultsView = ({
   const profile = getUserProfile();
   
   if (!profile) {
-    return <div>Benutzerprofil nicht gefunden</div>;
+    return <div>User profile not found</div>;
   }
   
   const getUserAnswer = (fantasyId: number): string => {
     const answer = userAnswers.find(a => a.fantasyId === fantasyId)?.answer;
-    if (answer === "interested") return "Interessiert";
-    if (answer === "conditionally") return "Bedingt interessiert";
-    return "Nicht bekannt";
+    if (answer === "interested") return "Interested";
+    if (answer === "conditionally") return "Conditionally interested";
+    return "Unknown";
   };
   
   const getPartnerAnswer = (fantasyId: number): string => {
     const answer = partnerAnswers.find(a => a.fantasyId === fantasyId)?.answer;
-    if (answer === "interested") return "Interessiert";
-    if (answer === "conditionally") return "Bedingt interessiert";
-    return "Nicht bekannt";
+    if (answer === "interested") return "Interested";
+    if (answer === "conditionally") return "Conditionally interested";
+    return "Unknown";
   };
 
   return (
     <div className="w-full max-w-2xl mx-auto">
       <h2 className="text-2xl font-bold text-center mb-6">
-        Eure gemeinsamen Interessen
+        Your Shared Interests
       </h2>
       
       {sharedFantasies.length === 0 ? (
         <Card className="mb-4">
           <CardContent className="pt-6">
             <p className="text-center">
-              Keine gemeinsamen Interessen gefunden. Probiere mehr Fantasien zu beantworten!
+              No shared interests found. Try answering more fantasies!
             </p>
           </CardContent>
         </Card>
       ) : (
         <>
           <p className="text-center mb-6">
-            Diese {sharedFantasies.length} Fantasien habt ihr gemeinsam ausgewählt:
+            You have selected these {sharedFantasies.length} fantasies in common:
           </p>
           
           {sharedFantasies.map(fantasy => {
@@ -73,7 +73,7 @@ const ResultsView = ({
                   </CardTitle>
                   <CardDescription>
                     <div className="flex justify-between">
-                      <span>Du: {getUserAnswer(fantasy.id)}</span>
+                      <span>You: {getUserAnswer(fantasy.id)}</span>
                       <span>{partnerName}: {getPartnerAnswer(fantasy.id)}</span>
                     </div>
                   </CardDescription>

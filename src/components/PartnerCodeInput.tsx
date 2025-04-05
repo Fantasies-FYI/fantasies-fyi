@@ -16,7 +16,7 @@ const PartnerCodeInput = ({ onCodeProcessed, onCancel }: PartnerCodeInputProps) 
 
   const processCode = () => {
     if (!code.trim()) {
-      toast.error("Bitte gib einen Code ein");
+      toast.error("Please enter a code");
       return;
     }
     
@@ -24,13 +24,13 @@ const PartnerCodeInput = ({ onCodeProcessed, onCancel }: PartnerCodeInputProps) 
     try {
       const partnerData = decodePartnerCode(code);
       if (partnerData) {
-        toast.success(`Code von ${partnerData.profile.name} erfolgreich entschlüsselt`);
+        toast.success(`Successfully decoded ${partnerData.profile.name}'s code`);
         onCodeProcessed(partnerData);
       } else {
-        toast.error("Ungültiger oder beschädigter Code");
+        toast.error("Invalid or corrupted code");
       }
     } catch (error) {
-      toast.error("Fehler bei der Verarbeitung des Codes");
+      toast.error("Error processing code");
       console.error(error);
     } finally {
       setIsProcessing(false);
@@ -41,18 +41,18 @@ const PartnerCodeInput = ({ onCodeProcessed, onCancel }: PartnerCodeInputProps) 
     <div className="w-full">
       <div className="mb-4">
         <p className="mb-4">
-          Füge den Code ein, den du von deinem Partner erhalten hast, um eure gemeinsamen Interessen zu sehen.
+          Enter the code you received from your partner to see your shared interests.
         </p>
         <Input
           value={code}
           onChange={(e) => setCode(e.target.value)}
-          placeholder="Partner-Code hier einfügen"
+          placeholder="Enter partner code here"
           className="font-mono mb-4"
         />
       </div>
       <div className="flex justify-center">
         <Button onClick={processCode} disabled={isProcessing}>
-          {isProcessing ? "Verarbeitung..." : "Code verarbeiten"}
+          {isProcessing ? "Processing..." : "Process Code"}
         </Button>
       </div>
     </div>

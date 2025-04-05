@@ -25,22 +25,22 @@ const Navigation = ({ onResetConfirmed }: NavigationProps) => {
         <Dialog open={resetDialogOpen} onOpenChange={setResetDialogOpen}>
           <DialogTrigger asChild>
             <Button variant="destructive" size="sm">
-              Zurücksetzen
+              Reset
             </Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Alles zurücksetzen?</DialogTitle>
+              <DialogTitle>Reset Everything?</DialogTitle>
               <DialogDescription>
-                Diese Aktion wird dein Profil und alle Antworten löschen. Diese Aktion kann nicht rückgängig gemacht werden.
+                This action will delete your profile and all answers. This action cannot be undone.
               </DialogDescription>
             </DialogHeader>
             <div className="flex justify-end space-x-2 mt-4">
               <Button variant="outline" onClick={() => setResetDialogOpen(false)}>
-                Abbrechen
+                Cancel
               </Button>
               <Button variant="destructive" onClick={handleReset}>
-                Zurücksetzen
+                Reset
               </Button>
             </div>
           </DialogContent>

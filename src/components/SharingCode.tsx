@@ -21,10 +21,10 @@ const SharingCode = ({ onClose }: SharingCodeProps) => {
   const copyToClipboard = () => {
     navigator.clipboard.writeText(code)
       .then(() => {
-        toast.success("Code in die Zwischenablage kopiert!");
+        toast.success("Code copied to clipboard!");
       })
       .catch(() => {
-        toast.error("Fehler beim Kopieren des Codes");
+        toast.error("Error copying code");
       });
   };
 
@@ -32,7 +32,7 @@ const SharingCode = ({ onClose }: SharingCodeProps) => {
     <div className="w-full">
       <CardContent className="p-0">
         <p className="mb-4">
-          Dies ist dein einzigartiger Code, den du mit deinem Partner teilen kannst.
+          This is your unique code that you can share with your partner.
         </p>
         <Input
           value={code}
@@ -41,18 +41,18 @@ const SharingCode = ({ onClose }: SharingCodeProps) => {
         />
         <div className="text-sm">
           <p>
-            Dein Partner benötigt diesen Code, um eure gemeinsamen Fantasien 
-            zu sehen. Wie kannst du diesen teilen:
+            Your partner needs this code to see your shared fantasies. 
+            Ways to share:
           </p>
           <ul className="list-disc list-inside mt-2 space-y-1">
-            <li>Kopiere den Code und sende ihn per Nachricht</li>
-            <li>Zeige diesen Code deinem Partner direkt</li>
+            <li>Copy the code and send it in a message</li>
+            <li>Show this code directly to your partner</li>
           </ul>
         </div>
       </CardContent>
       <div className="flex justify-center mt-6">
         <Button onClick={copyToClipboard}>
-          Code kopieren
+          Copy Code
         </Button>
       </div>
     </div>

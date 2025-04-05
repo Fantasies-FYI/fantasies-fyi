@@ -1,10 +1,10 @@
 
 export type FantasyCategory = 
-  | "Romantische Fantasien"
-  | "Rollenspiele"
-  | "Orte"
-  | "Positionen"
-  | "Hilfsmittel";
+  | "Romantic Fantasies"
+  | "Role Play"
+  | "Locations"
+  | "Positions"
+  | "Accessories";
 
 export type AnswerType = "interested" | "notInterested" | "conditionally" | null;
 
@@ -34,82 +34,82 @@ export interface UserProfile {
 const sampleFantasies: Fantasy[] = [
   {
     id: 1,
-    category: "Romantische Fantasien",
+    category: "Romantic Fantasies",
     fantasy: {
-      male: "Ein romantisches Dinner bei Kerzenlicht mit {partnerName} genießen",
-      female: "Ein romantisches Dinner bei Kerzenlicht mit {partnerName} genießen"
+      male: "Enjoy a romantic candle-lit dinner with {partnerName}",
+      female: "Enjoy a romantic candle-lit dinner with {partnerName}"
     }
   },
   {
     id: 2,
-    category: "Romantische Fantasien",
+    category: "Romantic Fantasies",
     fantasy: {
-      male: "Mit {partnerName} einen Sonnenuntergang am Strand erleben",
-      female: "Mit {partnerName} einen Sonnenuntergang am Strand erleben"
+      male: "Experience a sunset on the beach with {partnerName}",
+      female: "Experience a sunset on the beach with {partnerName}"
     }
   },
   {
     id: 3,
-    category: "Rollenspiele",
+    category: "Role Play",
     fantasy: {
-      male: "Mit {partnerName} ein Rollenspiel als Arzt und Patient erleben",
-      female: "Mit {partnerName} ein Rollenspiel als Ärztin und Patient erleben"
+      male: "Experience a role-play as doctor and patient with {partnerName}",
+      female: "Experience a role-play as doctor and patient with {partnerName}"
     }
   },
   {
     id: 4,
-    category: "Rollenspiele",
+    category: "Role Play",
     fantasy: {
-      male: "Mit {partnerName} ein Rollenspiel als Fremde durchführen",
-      female: "Mit {partnerName} ein Rollenspiel als Fremde durchführen"
+      male: "Conduct a role-play as strangers with {partnerName}",
+      female: "Conduct a role-play as strangers with {partnerName}"
     }
   },
   {
     id: 5,
-    category: "Orte",
+    category: "Locations",
     fantasy: {
-      male: "Intimität mit {partnerName} im Freien erleben",
-      female: "Intimität mit {partnerName} im Freien erleben"
+      male: "Experience intimacy with {partnerName} outdoors",
+      female: "Experience intimacy with {partnerName} outdoors"
     }
   },
   {
     id: 6,
-    category: "Orte",
+    category: "Locations",
     fantasy: {
-      male: "Mit {partnerName} ein Wellness-Wochenende in einem luxuriösen Hotel verbringen",
-      female: "Mit {partnerName} ein Wellness-Wochenende in einem luxuriösen Hotel verbringen"
+      male: "Spend a wellness weekend with {partnerName} in a luxurious hotel",
+      female: "Spend a wellness weekend with {partnerName} in a luxurious hotel"
     }
   },
   {
     id: 7,
-    category: "Positionen",
+    category: "Positions",
     fantasy: {
-      male: "Neue Positionen mit {partnerName} ausprobieren",
-      female: "Neue Positionen mit {partnerName} ausprobieren"
+      male: "Try new positions with {partnerName}",
+      female: "Try new positions with {partnerName}"
     }
   },
   {
     id: 8,
-    category: "Hilfsmittel",
+    category: "Accessories",
     fantasy: {
-      male: "Mit {partnerName} Massageöle verwenden",
-      female: "Mit {partnerName} Massageöle verwenden"
+      male: "Use massage oils with {partnerName}",
+      female: "Use massage oils with {partnerName}"
     }
   },
   {
     id: 9,
-    category: "Hilfsmittel",
+    category: "Accessories",
     fantasy: {
-      male: "Mit {partnerName} gemeinsam erotische Filme anschauen",
-      female: "Mit {partnerName} gemeinsam erotische Filme anschauen"
+      male: "Watch erotic films together with {partnerName}",
+      female: "Watch erotic films together with {partnerName}"
     }
   },
   {
     id: 10,
-    category: "Romantische Fantasien",
+    category: "Romantic Fantasies",
     fantasy: {
-      male: "Mit {partnerName} einen Tanzkurs besuchen",
-      female: "Mit {partnerName} einen Tanzkurs besuchen"
+      male: "Take a dance class with {partnerName}",
+      female: "Take a dance class with {partnerName}"
     }
   }
 ];

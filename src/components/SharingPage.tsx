@@ -31,7 +31,7 @@ const SharingPage = ({
   const handleConfirm = () => {
     setHasConfirmed(true);
     setResultsViewed(true);
-    toast.success("Deine Antworten wurden gesperrt. Du kannst sie jetzt nicht mehr ändern.");
+    toast.success("Your answers have been locked. You can no longer change them.");
   };
 
   // If not all questions are answered, display a message and return button
@@ -40,12 +40,12 @@ const SharingPage = ({
       <div className="w-full max-w-md mx-auto">
         <Card>
           <CardHeader>
-            <CardTitle className="text-center">Teile deine Fantasien</CardTitle>
+            <CardTitle className="text-center">Share Your Fantasies</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-center py-6">
-              <p className="mb-4">Du musst zuerst alle Fragen beantworten, bevor du Ergebnisse teilen oder ansehen kannst.</p>
-              <Button onClick={onClose}>Zurück zur Übersicht</Button>
+              <p className="mb-4">You need to answer all questions before you can share or view results.</p>
+              <Button onClick={onClose}>Back to Overview</Button>
             </div>
           </CardContent>
         </Card>
@@ -65,14 +65,14 @@ const SharingPage = ({
       <div className="w-full max-w-md mx-auto">
         <Card>
           <CardHeader>
-            <CardTitle className="text-center">Teile deine Fantasien</CardTitle>
+            <CardTitle className="text-center">Share Your Fantasies</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-center py-6">
-              <p className="mb-4">Wichtig: Nach dem Teilen kannst du deine Antworten nicht mehr ändern. Dies stellt sicher, dass deine Ergebnisse mit deinem Partner konsistent bleiben.</p>
+              <p className="mb-4">Important: After sharing, you can no longer change your answers. This ensures that your results remain consistent with your partner.</p>
               <div className="flex justify-center space-x-3">
-                <Button variant="outline" onClick={onClose}>Abbrechen</Button>
-                <Button onClick={handleConfirm}>Bestätigen & Fortfahren</Button>
+                <Button variant="outline" onClick={onClose}>Cancel</Button>
+                <Button onClick={handleConfirm}>Confirm & Continue</Button>
               </div>
             </div>
           </CardContent>
@@ -91,13 +91,13 @@ const SharingPage = ({
     <div className="w-full max-w-md mx-auto pb-16">
       <Card>
         <CardHeader>
-          <CardTitle className="text-center">Teile deine Fantasien</CardTitle>
+          <CardTitle className="text-center">Share Your Fantasies</CardTitle>
         </CardHeader>
         <CardContent>
           <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as "generate" | "enter")}>
             <TabsList className="grid w-full grid-cols-2 mb-6">
-              <TabsTrigger value="generate">Code generieren</TabsTrigger>
-              <TabsTrigger value="enter">Partner-Code eingeben</TabsTrigger>
+              <TabsTrigger value="generate">Generate Code</TabsTrigger>
+              <TabsTrigger value="enter">Enter Partner Code</TabsTrigger>
             </TabsList>
             
             <TabsContent value="generate">
