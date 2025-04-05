@@ -16,8 +16,8 @@ const InfoPage = ({ onClose, onReset }: InfoPageProps) => {
   const [resetDialogOpen, setResetDialogOpen] = useState(false);
   
   const handleReset = () => {
-    clearUserAnswers();
     clearUserProfile();
+    clearUserAnswers();
     setResetDialogOpen(false);
     toast.success("All answers have been reset");
     onReset();

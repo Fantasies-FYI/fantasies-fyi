@@ -23,7 +23,9 @@ import {
   getUserAnswers, 
   getUserAnswerForFantasy, 
   PartnerData,
-  getSharedInterests
+  getSharedInterests,
+  clearUserProfile,
+  clearUserAnswers
 } from "@/utils/storage";
 import { toast } from "sonner";
 
@@ -52,6 +54,10 @@ const Index = () => {
   
   // Initialize application data
   useEffect(() => {
+    loadAppData();
+  }, []);
+
+  const loadAppData = () => {
     // Extract unique categories
     const uniqueCategories = Array.from(
       new Set(sampleFantasies.map(f => f.category))
@@ -64,10 +70,14 @@ const Index = () => {
     
     if (savedProfile) {
       setProfile(savedProfile);
+    } else {
+      setProfile(null);
     }
     
     if (savedAnswers) {
       setAnswers(savedAnswers);
+    } else {
+      setAnswers([]);
     }
     
     // Calculate progress per category
@@ -77,9 +87,9 @@ const Index = () => {
     
     uniqueCategories.forEach(category => {
       const categoryFantasies = sampleFantasies.filter(f => f.category === category);
-      const answeredCount = savedAnswers.filter(
+      const answeredCount = savedAnswers ? savedAnswers.filter(
         answer => categoryFantasies.some(f => f.id === answer.fantasyId)
-      ).length;
+      ).length : 0;
       
       progress[category] = {
         answered: answeredCount,
@@ -89,7 +99,7 @@ const Index = () => {
     
     setCategoryProgress(progress);
     setIsLoading(false);
-  }, []);
+  };
   
   // Check if all questions are answered
   const areAllQuestionsAnswered = () => {
@@ -105,7 +115,7 @@ const Index = () => {
   // Handle fantasy answer selection
   const handleAnswerSelection = (answer: AnswerType, fantasyId: number) => {
     if (resultsViewed) {
-      toast.error("Du kannst deine Antworten nicht mehr ändern, nachdem du die Ergebnisse gesehen hast.");
+      toast.error("You cannot change your answers after viewing the results.");
       return;
     }
     
@@ -172,7 +182,7 @@ const Index = () => {
   
   const handlePartnerCodeProcessed = (data: PartnerData) => {
     if (!areAllQuestionsAnswered()) {
-      toast.error("Du musst zuerst alle Fragen beantworten, bevor du die Ergebnisse sehen kannst.");
+      toast.error("You must answer all questions before you can see the results.");
       setCurrentView("categories");
       return;
     }
@@ -195,7 +205,14 @@ const Index = () => {
   };
 
   const handleResetAnswers = () => {
+    // Clear data from localStorage
+    clearUserProfile();
+    clearUserAnswers();
+    
+    // Reset all state
+    setProfile(null);
     setAnswers([]);
+    setResultsViewed(false);
     
     // Reset category progress
     const resetProgress: {
@@ -211,7 +228,8 @@ const Index = () => {
     });
     
     setCategoryProgress(resetProgress);
-    setResultsViewed(false);
+    
+    // Return to main view (onboarding will show automatically)
     setCurrentView("categories");
   };
   
@@ -220,7 +238,7 @@ const Index = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Lade Fantasy Shared Hearts...</h1>
+          <h1 className="text-2xl font-bold mb-4">Loading Fantasy Shared Hearts...</h1>
         </div>
       </div>
     );
@@ -240,7 +258,7 @@ const Index = () => {
       {currentView === "categories" && (
         <div className="p-4">
           <h2 className="text-xl font-bold text-center mb-6">
-            Wähle eine Kategorie
+            Choose a Category
           </h2>
           <CategoryGrid 
             categories={categories}
@@ -251,7 +269,7 @@ const Index = () => {
           
           {!areAllQuestionsAnswered() && (
             <div className="text-center mt-8">
-              <p className="mb-4">Bitte beantworte alle Fragen, um die Ergebnisse zu sehen.</p>
+              <p className="mb-4">Please answer all questions to see the results.</p>
             </div>
           )}
           
