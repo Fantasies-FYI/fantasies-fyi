@@ -30,10 +30,22 @@ const InfoPage = ({ onClose, onReset }: InfoPageProps) => {
           <CardTitle className="text-2xl">About Fantasy Shared Hearts</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
+          <p className="italic text-lg text-center mb-4">
+            Explore your hidden pleasures
+          </p>
+          
+          <p>
+            Welcome to your space to explore and share your hidden sexual fantasies. 
+            By completing a simple survey, you'll discover the desires you both share 
+            and find mutual fantasies.
+          </p>
+          
           <h3 className="text-lg font-semibold">What is Fantasy Shared Hearts?</h3>
           <p>
-            Fantasy Shared Hearts is an app that helps couples discover their shared interests and fantasies.
-            Both partners independently answer questions about various fantasies and then share their results.
+            Fantasy Shared Hearts is an interactive quiz application designed to help couples 
+            explore and discuss their sexual preferences and boundaries in a safe, comfortable environment. 
+            By answering questions about various sexual activities and fantasies, couples can gain 
+            insights into each other's desires and foster open communication about intimacy.
           </p>
           
           <h3 className="text-lg font-semibold">How does it work?</h3>
@@ -51,11 +63,33 @@ const InfoPage = ({ onClose, onReset }: InfoPageProps) => {
             <li><strong>Maybe:</strong> If my partner is interested.</li>
             <li><strong>No:</strong> I am not interested.</li>
           </ul>
-          
+        </CardContent>
+      </Card>
+      
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle className="text-xl">Privacy & Purpose</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
           <h3 className="text-lg font-semibold">Privacy and Security</h3>
           <p>
             Fantasy Shared Hearts stores all your data locally on your device. No data is sent to servers.
-            The shared code is encrypted to protect your privacy.
+            The shared code is encrypted to protect your privacy. Your personal information is not sold, 
+            traded, or otherwise transferred to outside parties.
+          </p>
+          
+          <h3 className="text-lg font-semibold">Can I see all of my partner's answers?</h3>
+          <p>
+            The app is designed to only show fantasies where both partners have expressed interest.
+            This approach ensures comfort and mutual consent in exploring shared desires.
+            The focus is on finding common ground rather than exposing all preferences.
+          </p>
+          
+          <h3 className="text-lg font-semibold">Important Notice</h3>
+          <p>
+            Fantasy Shared Hearts is intended for consenting adults only. The app is designed 
+            to facilitate communication and should not be used as a substitute for professional 
+            advice or counseling. Always practice safe, consensual, and legal sexual activities.
           </p>
         </CardContent>
       </Card>

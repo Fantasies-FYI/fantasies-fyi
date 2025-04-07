@@ -32,15 +32,17 @@ const FloatingMenu = ({
               <ArrowLeft className="h-5 w-5 mr-1" />
               <span>Back to Overview</span>
             </Button>
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              onClick={onInfoClick}
-              className="text-white hover:bg-gray-800/60 rounded-full"
-              title="Help"
-            >
-              <Info className="h-5 w-5" />
-            </Button>
+            <div className="flex">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                onClick={onInfoClick}
+                className="text-white hover:bg-gray-800/60 rounded-full"
+                title="Help"
+              >
+                <Info className="h-5 w-5" />
+              </Button>
+            </div>
           </div>
         ) : (
           <div className="flex gap-2">
