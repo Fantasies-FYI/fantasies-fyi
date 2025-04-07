@@ -25,12 +25,17 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
   });
   
   const handleNext = () => {
-    if (step === 1 && (!profile.name || !profile.gender)) {
-      toast.error("Please fill out all fields");
+    if (step === 1) {
+      setStep(step + 1);
       return;
     }
     
-    if (step === 2 && (!profile.ageRange || !profile.partnerName)) {
+    if (step === 2) {
+      setStep(step + 1);
+      return;
+    }
+    
+    if (step === 3 && (!profile.name || !profile.gender || !profile.ageRange || !profile.partnerName)) {
       toast.error("Please fill out all fields");
       return;
     }
@@ -62,6 +67,77 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
         explore and discover shared sexual fantasies in a safe, comfortable environment.
       </p>
       
+      <div className="bg-muted p-4 rounded-lg mt-4">
+        <p className="text-sm">
+          <strong>Note:</strong> Fantasy Shared Hearts is intended for consenting adults only.
+          All data is stored locally on your device for privacy.
+        </p>
+      </div>
+      
+      <p className="mb-4">
+        Fantasies.fyi is a questionnaire designed for you to explore all of your sexual fantasies without limits.
+        Simply answer a series of questions, and have your partner do the same. If your interests match, 
+        they will be revealed at the end of your session. No awkward conversations necessary.
+      </p>
+    </CardContent>
+  );
+  
+  const renderStep2 = () => (
+    <CardContent className="space-y-4">
+      <div className="text-center space-y-4">
+        <h3 className="text-lg font-medium">How Fantasy Shared Hearts Works</h3>
+        <p className="mb-2">
+          This app helps you discover sexual fantasies that both you and your partner are interested in.
+          You'll each answer questions independently, then share your results to see where your desires align.
+        </p>
+        
+        <div className="bg-muted p-4 rounded-lg mt-4">
+          <h4 className="font-medium mb-2 text-center">The Process</h4>
+          <ol className="text-sm space-y-2 text-left list-decimal pl-4">
+            <li>Browse through different fantasy categories</li>
+            <li>Answer questions about each fantasy</li>
+            <li>Generate a unique code to share with your partner</li>
+            <li>When your partner completes their answers and enters your code, you'll both see your matches</li>
+          </ol>
+        </div>
+      </div>
+      
+      <div className="text-center space-y-4 mt-6">
+        <h3 className="text-lg font-medium">Understanding Answer Options</h3>
+        <p>
+          For each fantasy, you'll have three possible responses. Be honest with your answers!
+        </p>
+        
+        <div className="bg-muted p-4 rounded-lg mt-4">
+          <h4 className="font-medium mb-3 text-center">Answer Options</h4>
+          <div className="text-sm space-y-3 text-left">
+            <p className="mb-2">
+              <span className="font-bold">Yes:</span> This sounds fun! You're enthusiastic about this fantasy.
+            </p>
+            <p className="mb-2">
+              <span className="font-bold">Maybe:</span> If my partner is interested. You're open to it if your partner wants to try.
+            </p>
+            <p>
+              <span className="font-bold">No:</span> I am not interested. This fantasy is not for you.
+            </p>
+          </div>
+        </div>
+        
+        <p className="mt-4">
+          The app will only reveal fantasies where you both showed interest 
+          (both said "Yes" or one said "Yes" and the other said "Maybe").
+        </p>
+        
+        <p className="mt-4 text-sm italic">
+          Can I just select 'yes' to everything, and just see my partner's answers? You could do that, 
+          but that would also make you a dick. The focus is on finding common ground rather than exposing all preferences.
+        </p>
+      </div>
+    </CardContent>
+  );
+  
+  const renderStep3 = () => (
+    <CardContent className="space-y-4">
       <div className="space-y-2">
         <Label htmlFor="name">Your Name</Label>
         <Input
@@ -88,11 +164,7 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
           </div>
         </RadioGroup>
       </div>
-    </CardContent>
-  );
-  
-  const renderStep2 = () => (
-    <CardContent className="space-y-4">
+      
       <div className="space-y-2">
         <Label htmlFor="age-range">Age Range</Label>
         <Select
@@ -127,64 +199,28 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
           onChange={(e) => setProfile({ ...profile, partnerName: e.target.value })}
         />
       </div>
-      
-      <div className="mt-4 p-3 bg-muted rounded-md">
-        <p className="text-sm">
-          <strong>Note:</strong> Fantasy Shared Hearts is intended for consenting adults only.
-          All data is stored locally on your device for privacy.
-        </p>
-      </div>
-    </CardContent>
-  );
-  
-  const renderStep3 = () => (
-    <CardContent className="space-y-4">
-      <div className="text-center space-y-4">
-        <h3 className="text-lg font-medium">How Fantasy Shared Hearts Works</h3>
-        <p className="mb-2">
-          This app helps you discover sexual fantasies that both you and your partner are interested in.
-          You'll each answer questions independently, then share your results to see where your desires align.
-        </p>
-        
-        <div className="bg-muted p-4 rounded-lg mt-4">
-          <h4 className="font-medium mb-2 text-center">The Process</h4>
-          <ol className="text-sm space-y-2 text-left list-decimal pl-4">
-            <li>Browse through different fantasy categories</li>
-            <li>Answer questions about each fantasy</li>
-            <li>Generate a unique code to share with your partner</li>
-            <li>When your partner completes their answers and enters your code, you'll both see your matches</li>
-          </ol>
-        </div>
-      </div>
     </CardContent>
   );
   
   const renderStep4 = () => (
     <CardContent className="space-y-4">
       <div className="text-center space-y-4">
-        <h3 className="text-lg font-medium">Understanding Answer Options</h3>
-        <p>
-          For each fantasy, you'll have three possible responses. Be honest with your answers!
+        <h3 className="text-lg font-medium">Privacy & Security</h3>
+        <p className="mb-4">
+          Fantasy Shared Hearts stores all your data locally on your device. No data is sent to servers.
+          The shared code is encrypted to protect your privacy. Your personal information is not sold, 
+          traded, or otherwise transferred to outside parties.
         </p>
         
-        <div className="bg-muted p-4 rounded-lg mt-4">
-          <h4 className="font-medium mb-3 text-center">Answer Options</h4>
-          <div className="text-sm space-y-3 text-left">
-            <p className="mb-2">
-              <span className="font-bold">Yes:</span> This sounds fun! You're enthusiastic about this fantasy.
-            </p>
-            <p className="mb-2">
-              <span className="font-bold">Maybe:</span> If my partner is interested. You're open to it if your partner wants to try.
-            </p>
-            <p>
-              <span className="font-bold">No:</span> I am not interested. This fantasy is not for you.
-            </p>
-          </div>
-        </div>
+        <h3 className="text-lg font-medium">Important Notice</h3>
+        <p className="mb-4">
+          Fantasy Shared Hearts is intended for consenting adults only. The app is designed 
+          to facilitate communication and should not be used as a substitute for professional 
+          advice or counseling. Always practice safe, consensual, and legal sexual activities.
+        </p>
         
-        <p className="mt-4">
-          The app will only reveal fantasies where you both showed interest 
-          (both said "Yes" or one said "Yes" and the other said "Maybe").
+        <p className="mt-4 font-semibold">
+          Ready to start exploring your hidden desires together?
         </p>
       </div>
     </CardContent>
@@ -196,10 +232,10 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
         <CardTitle>Fantasy Shared Hearts</CardTitle>
         <CardDescription>
           Step {step} of 4: {
-            step === 1 ? "Welcome & Personal Information" : 
-            step === 2 ? "Partner Information" : 
-            step === 3 ? "How It Works" : 
-            "Answer Options"
+            step === 1 ? "Welcome & Introduction" : 
+            step === 2 ? "How It Works & Answer Options" : 
+            step === 3 ? "Personal Information" : 
+            "Privacy & Final Notes"
           }
         </CardDescription>
       </CardHeader>
