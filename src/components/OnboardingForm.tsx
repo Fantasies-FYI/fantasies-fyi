@@ -21,6 +21,7 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
     gender: "male",
     ageRange: "23-28",
     partnerName: "",
+    partnerGender: "female", // Add partner gender default
     completedOnboarding: false,
   });
   
@@ -35,7 +36,7 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
       return;
     }
     
-    if (step === 3 && (!profile.name || !profile.gender || !profile.ageRange || !profile.partnerName)) {
+    if (step === 3 && (!profile.name || !profile.gender || !profile.ageRange || !profile.partnerName || !profile.partnerGender)) {
       toast.error("Please fill out all fields");
       return;
     }
@@ -149,7 +150,7 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
       </div>
       
       <div className="space-y-2">
-        <Label>Gender</Label>
+        <Label>Your Gender</Label>
         <RadioGroup
           value={profile.gender}
           onValueChange={(value) => setProfile({ ...profile, gender: value as "male" | "female" })}
@@ -166,7 +167,7 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
       </div>
       
       <div className="space-y-2">
-        <Label htmlFor="age-range">Age Range</Label>
+        <Label htmlFor="age-range">Your Age Range</Label>
         <Select
           value={profile.ageRange}
           onValueChange={(value) => 
@@ -190,7 +191,7 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
         </Select>
       </div>
       
-      <div className="space-y-2">
+      <div className="space-y-2 mt-6">
         <Label htmlFor="partner-name">Partner's Name</Label>
         <Input
           id="partner-name"
@@ -198,6 +199,23 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
           value={profile.partnerName}
           onChange={(e) => setProfile({ ...profile, partnerName: e.target.value })}
         />
+      </div>
+      
+      <div className="space-y-2">
+        <Label>Partner's Gender</Label>
+        <RadioGroup
+          value={profile.partnerGender}
+          onValueChange={(value) => setProfile({ ...profile, partnerGender: value as "male" | "female" })}
+        >
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="male" id="partner-male" />
+            <Label htmlFor="partner-male">Male</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="female" id="partner-female" />
+            <Label htmlFor="partner-female">Female</Label>
+          </div>
+        </RadioGroup>
       </div>
     </CardContent>
   );
