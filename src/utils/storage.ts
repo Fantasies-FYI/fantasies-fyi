@@ -1,13 +1,14 @@
 
 import { UserProfile, UserAnswer, AnswerType } from "../data/sampleFantasies";
 import CryptoJS from "crypto-js";
+import { ExtendedUserProfile } from "@/types/user";
 
 const USER_PROFILE_KEY = "fantasy-shared-hearts-profile";
 const USER_ANSWERS_KEY = "fantasy-shared-hearts-answers";
 const ENCRYPTION_SECRET = "fantasy-shared-hearts-secret-key";
 
 // User Profile Functions
-export const saveUserProfile = (profile: UserProfile): void => {
+export const saveUserProfile = (profile: UserProfile | ExtendedUserProfile): void => {
   localStorage.setItem(USER_PROFILE_KEY, JSON.stringify(profile));
 };
 

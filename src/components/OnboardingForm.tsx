@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { UserProfile } from "@/data/sampleFantasies";
 import { saveUserProfile } from "@/utils/storage";
 import { toast } from "sonner";
+import { ExtendedUserProfile } from "@/types/user";
 
 interface OnboardingFormProps {
   onComplete: (profile: UserProfile) => void;
@@ -16,12 +16,12 @@ interface OnboardingFormProps {
 
 const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
   const [step, setStep] = useState(1);
-  const [profile, setProfile] = useState<UserProfile>({
+  const [profile, setProfile] = useState<ExtendedUserProfile>({
     name: "",
     gender: "male",
     ageRange: "23-28",
     partnerName: "",
-    partnerGender: "female", // Add partner gender default
+    partnerGender: "female",
     completedOnboarding: false,
   });
   
@@ -44,9 +44,12 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
     if (step < 4) {
       setStep(step + 1);
     } else {
-      const completeProfile = { ...profile, completedOnboarding: true };
-      saveUserProfile(completeProfile);
-      onComplete(completeProfile);
+      const baseProfile: UserProfile = {
+        ...profile,
+        completedOnboarding: true,
+      };
+      saveUserProfile(baseProfile);
+      onComplete(baseProfile);
     }
   };
   
