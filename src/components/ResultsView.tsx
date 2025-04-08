@@ -27,14 +27,14 @@ const ResultsView = ({
   const getUserAnswer = (fantasyId: number): string => {
     const answer = userAnswers.find(a => a.fantasyId === fantasyId)?.answer;
     if (answer === "interested") return "Interested";
-    if (answer === "conditionally") return "Conditionally interested";
+    if (answer === "conditionally") return "Maybe interested";
     return "Unknown";
   };
   
   const getPartnerAnswer = (fantasyId: number): string => {
     const answer = partnerAnswers.find(a => a.fantasyId === fantasyId)?.answer;
     if (answer === "interested") return "Interested";
-    if (answer === "conditionally") return "Conditionally interested";
+    if (answer === "conditionally") return "Maybe interested";
     return "Unknown";
   };
 

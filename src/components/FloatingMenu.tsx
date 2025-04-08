@@ -52,10 +52,10 @@ const FloatingMenu = ({
               size="sm" 
               onClick={onShareClick}
               className="text-white hover:text-white hover:bg-gray-800/60 rounded-full flex-1 mr-1"
-              title="Share"
+              title="Share with Partner"
             >
               <Share2 className="h-5 w-5 mr-1" />
-              <span>Share</span>
+              <span>Share with Partner</span>
             </Button>
             <Button 
               variant="ghost" 
