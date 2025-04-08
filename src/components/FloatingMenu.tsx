@@ -35,12 +35,13 @@ const FloatingMenu = ({
             <div className="flex">
               <Button 
                 variant="ghost" 
-                size="icon" 
+                size="sm" 
                 onClick={onInfoClick}
                 className="text-white hover:text-white hover:bg-gray-800/60 rounded-full"
                 title="Help"
               >
-                <Info className="h-5 w-5" />
+                <Info className="h-5 w-5 mr-1" />
+                <span>Help</span>
               </Button>
             </div>
           </div>
