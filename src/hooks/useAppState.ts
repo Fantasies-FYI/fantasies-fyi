@@ -1,12 +1,10 @@
-
 import { useState, useEffect } from "react";
 import { 
   FantasyCategory, 
   UserProfile, 
   UserAnswer, 
   AnswerType,
-  Fantasy,
-  PartnerData
+  Fantasy
 } from "@/data/sampleFantasies";
 import sampleFantasies from "@/data/sampleFantasies";
 import { 
@@ -15,7 +13,8 @@ import {
   getUserAnswers, 
   getSharedInterests,
   clearUserProfile,
-  clearUserAnswers
+  clearUserAnswers,
+  PartnerData
 } from "@/utils/storage";
 import { toast } from "sonner";
 

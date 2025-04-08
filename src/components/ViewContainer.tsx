@@ -5,7 +5,9 @@ import QuestionsView from "@/components/QuestionsView";
 import SharingPage from "@/components/SharingPage";
 import InfoPage from "@/components/InfoPage";
 import ResultsView from "@/components/ResultsView";
-import { Fantasy, FantasyCategory, UserAnswer, AnswerType, PartnerData } from "@/data/sampleFantasies";
+import FloatingMenu from "@/components/FloatingMenu";
+import { Fantasy, FantasyCategory, UserAnswer, AnswerType } from "@/data/sampleFantasies";
+import { PartnerData } from "@/utils/storage";
 
 type AppView = "categories" | "questions" | "sharing" | "info" | "results";
 
@@ -19,7 +21,7 @@ interface ViewContainerProps {
   partnerData: PartnerData | null;
   sharedFantasies: Fantasy[];
   resultsViewed: boolean;
-  areAllQuestionsAnswered: () => boolean;
+  areAllQuestionsAnswered: boolean;
   onSelectCategory: (category: FantasyCategory) => void;
   onAnswerSelection: (answer: AnswerType, fantasyId: number) => void;
   handlePartnerCodeProcessed: (data: PartnerData) => void;
@@ -63,7 +65,7 @@ const ViewContainer = ({
           categoryProgress={categoryProgress}
           onInfoClick={navigateToInfo}
           onShareClick={navigateToSharing}
-          areAllQuestionsAnswered={areAllQuestionsAnswered()}
+          areAllQuestionsAnswered={areAllQuestionsAnswered}
         />
       )}
       
