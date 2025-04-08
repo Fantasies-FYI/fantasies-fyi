@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { 
   FantasyCategory, 
@@ -39,11 +40,18 @@ export function useAppState() {
   const [partnerData, setPartnerData] = useState<PartnerData | null>(null);
   const [sharedFantasies, setSharedFantasies] = useState<Fantasy[]>([]);
   const [resultsViewed, setResultsViewed] = useState<boolean>(false);
+  const [areAllQuestionsAnswered, setAreAllQuestionsAnswered] = useState<boolean>(false);
   
   // Initialize application data
   useEffect(() => {
     loadAppData();
   }, []);
+
+  // Update areAllQuestionsAnswered whenever answers change
+  useEffect(() => {
+    const totalFantasies = sampleFantasies.length;
+    setAreAllQuestionsAnswered(answers.length === totalFantasies);
+  }, [answers]);
 
   const loadAppData = () => {
     // Extract unique categories
@@ -86,11 +94,16 @@ export function useAppState() {
     });
     
     setCategoryProgress(progress);
+    
+    // Check if all questions are answered
+    const totalFantasies = sampleFantasies.length;
+    setAreAllQuestionsAnswered(savedAnswers ? savedAnswers.length === totalFantasies : false);
+    
     setIsLoading(false);
   };
   
-  // Check if all questions are answered
-  const areAllQuestionsAnswered = () => {
+  // Helper function to check if all questions are answered
+  const checkAllQuestionsAnswered = () => {
     const totalFantasies = sampleFantasies.length;
     return answers.length === totalFantasies;
   };
@@ -134,6 +147,9 @@ export function useAppState() {
           setCategoryProgress(newProgress);
         }
       }
+      
+      // Update areAllQuestionsAnswered state after adding the answer
+      setAreAllQuestionsAnswered(checkAllQuestionsAnswered());
     }
   };
   
@@ -151,7 +167,7 @@ export function useAppState() {
   };
   
   const handlePartnerCodeProcessed = (data: PartnerData) => {
-    if (!areAllQuestionsAnswered()) {
+    if (!areAllQuestionsAnswered) {
       toast.error("You must answer all questions before you can see the results.");
       setCurrentView("categories");
       return;
@@ -198,6 +214,7 @@ export function useAppState() {
     });
     
     setCategoryProgress(resetProgress);
+    setAreAllQuestionsAnswered(false);
     
     // Return to main view (onboarding will show automatically)
     setCurrentView("categories");
@@ -220,8 +237,8 @@ export function useAppState() {
     partnerData,
     sharedFantasies,
     resultsViewed,
-    setCurrentView,
     areAllQuestionsAnswered,
+    setCurrentView,
     handleAnswerSelection,
     handleSelectCategory,
     handlePartnerCodeProcessed,
