@@ -2,7 +2,6 @@
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FantasyCategory } from "@/data/sampleFantasies";
-import { Progress } from "@/components/ui/progress";
 import { Check } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
@@ -44,7 +43,7 @@ const CategoryGrid = ({
             <AspectRatio ratio={1 / 1}>
               <div className="absolute inset-0 p-4 flex flex-col">
                 <CardHeader className="p-0 pb-2 flex-shrink-0">
-                  <CardTitle className="text-lg flex items-center">
+                  <CardTitle className="text-xl flex items-center">
                     <span>{category}</span>
                     {isComplete && (
                       <Check className="w-5 h-5 ml-2 text-green-500" />
@@ -52,11 +51,10 @@ const CategoryGrid = ({
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-0 flex-1 flex flex-col justify-between">
-                  <div className="flex justify-between text-sm mb-2">
-                    <span>{progress?.answered || 0} von {progress?.total || 0}</span>
-                    <span>{percentage}%</span>
+                  {/* Changed format from "X von Y" to "X / Y" */}
+                  <div className="text-sm">
+                    <span>{progress?.answered || 0} / {progress?.total || 0}</span>
                   </div>
-                  <Progress value={percentage} className="h-2 bg-gray-200" />
                   
                   {/* Category Icon */}
                   <div className="absolute bottom-2 right-2 opacity-20">
