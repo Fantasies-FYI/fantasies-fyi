@@ -27,7 +27,7 @@ const FloatingMenu = ({
               variant="ghost" 
               size="sm" 
               onClick={onBackClick}
-              className="text-white hover:bg-gray-800/60 rounded-full"
+              className="text-white hover:text-white hover:bg-gray-800/60 rounded-full w-full"
             >
               <ArrowLeft className="h-5 w-5 mr-1" />
               <span>Back to Overview</span>
@@ -37,7 +37,7 @@ const FloatingMenu = ({
                 variant="ghost" 
                 size="icon" 
                 onClick={onInfoClick}
-                className="text-white hover:bg-gray-800/60 rounded-full"
+                className="text-white hover:text-white hover:bg-gray-800/60 rounded-full"
                 title="Help"
               >
                 <Info className="h-5 w-5" />
@@ -45,26 +45,26 @@ const FloatingMenu = ({
             </div>
           </div>
         ) : (
-          <div className="flex gap-2">
+          <div className="flex w-full justify-between">
             <Button 
               variant="ghost" 
-              size={inCategoryView ? "icon" : "sm"} 
+              size="sm" 
               onClick={onShareClick}
-              className="text-white hover:bg-gray-800/60 rounded-full"
+              className="text-white hover:text-white hover:bg-gray-800/60 rounded-full flex-1 mr-1"
               title="Share"
             >
-              <Share2 className="h-5 w-5" />
-              {!inCategoryView && <span className="ml-1">Share</span>}
+              <Share2 className="h-5 w-5 mr-1" />
+              <span>Share</span>
             </Button>
             <Button 
               variant="ghost" 
-              size={inCategoryView ? "icon" : "sm"} 
+              size="sm" 
               onClick={onInfoClick}
-              className="text-white hover:bg-gray-800/60 rounded-full"
+              className="text-white hover:text-white hover:bg-gray-800/60 rounded-full flex-1 ml-1"
               title="Help"
             >
-              <Info className="h-5 w-5" />
-              {!inCategoryView && <span className="ml-1">Help</span>}
+              <Info className="h-5 w-5 mr-1" />
+              <span>Help</span>
             </Button>
           </div>
         )}
