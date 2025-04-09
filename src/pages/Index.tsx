@@ -30,9 +30,9 @@ const Index = () => {
   // Loading state
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-black">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4 text-white">Loading Fantasy Shared Hearts...</h1>
+          <h1 className="text-2xl font-bold mb-4">Loading Fantasy Shared Hearts...</h1>
         </div>
       </div>
     );
@@ -41,7 +41,7 @@ const Index = () => {
   // Onboarding for new users
   if (!profile || !profile.completedOnboarding) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-4 bg-black">
+      <div className="min-h-screen flex items-center justify-center p-4">
         <OnboardingForm onComplete={handleOnboardingComplete} />
       </div>
     );
