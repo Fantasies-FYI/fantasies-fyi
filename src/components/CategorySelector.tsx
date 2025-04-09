@@ -31,10 +31,10 @@ const CategorySelector = ({
               variant="outline"
               style={{
                 backgroundColor: isActive ? colors.background : 'transparent',
-                color: isActive ? colors.text : 'currentColor',
-                borderColor: colors.border
+                color: isActive ? '#ffffff' : 'currentColor',
+                borderColor: 'transparent'
               }}
-              className="whitespace-nowrap transition-colors"
+              className="whitespace-nowrap transition-colors border-0"
               onClick={() => onSelectCategory(category)}
             >
               {category}

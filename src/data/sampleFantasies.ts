@@ -1,10 +1,14 @@
-
 export type FantasyCategory = 
   | "Romantic Fantasies"
   | "Role Play"
   | "Locations"
   | "Positions"
-  | "Accessories";
+  | "Accessories"
+  | "Sensory Play"
+  | "Outdoor Adventures"
+  | "Spontaneous Encounters"
+  | "Power Dynamics"
+  | "Erotic Massage";
 
 export type AnswerType = "interested" | "notInterested" | "conditionally" | null;
 
@@ -45,46 +49,85 @@ export const categoryData: CategoryData[] = [
   {
     name: "Romantic Fantasies",
     colors: {
-      background: "#1e3a8a", // deep blue
+      background: "#d84c7b", // pink
       text: "#ffffff",
-      border: "#3b82f6"
+      border: "#d84c7b"
     }
   },
   {
     name: "Role Play",
     colors: {
-      background: "#7c2d12", // deep orange/brown
+      background: "#f3933d", // orange
       text: "#ffffff",
-      border: "#f97316"
+      border: "#f3933d"
     }
   },
   {
     name: "Locations",
     colors: {
-      background: "#065f46", // deep green
+      background: "#f9c74f", // yellow
       text: "#ffffff",
-      border: "#10b981"
+      border: "#f9c74f"
     }
   },
   {
     name: "Positions",
     colors: {
-      background: "#4c1d95", // deep purple
+      background: "#90be6d", // green
       text: "#ffffff",
-      border: "#8b5cf6"
+      border: "#90be6d"
     }
   },
   {
     name: "Accessories",
     colors: {
-      background: "#831843", // deep pink/magenta
+      background: "#74c7d4", // light blue
       text: "#ffffff",
-      border: "#ec4899"
+      border: "#74c7d4"
+    }
+  },
+  {
+    name: "Sensory Play",
+    colors: {
+      background: "#4d96e3", // blue
+      text: "#ffffff",
+      border: "#4d96e3"
+    }
+  },
+  {
+    name: "Outdoor Adventures",
+    colors: {
+      background: "#a866c7", // purple
+      text: "#ffffff",
+      border: "#a866c7"
+    }
+  },
+  {
+    name: "Spontaneous Encounters",
+    colors: {
+      background: "#d84c7b", // pink (repeated)
+      text: "#ffffff",
+      border: "#d84c7b"
+    }
+  },
+  {
+    name: "Power Dynamics",
+    colors: {
+      background: "#f3933d", // orange (repeated)
+      text: "#ffffff",
+      border: "#f3933d"
+    }
+  },
+  {
+    name: "Erotic Massage",
+    colors: {
+      background: "#f9c74f", // yellow (repeated)
+      text: "#ffffff",
+      border: "#f9c74f"
     }
   }
 ];
 
-// Helper function to get colors for a category
 export const getCategoryColors = (category: FantasyCategory): CategoryColors => {
   const found = categoryData.find(cat => cat.name === category);
   if (!found) {
@@ -92,13 +135,12 @@ export const getCategoryColors = (category: FantasyCategory): CategoryColors => 
     return {
       background: "#1e293b",
       text: "#ffffff",
-      border: "#475569"
+      border: "#1e293b"
     };
   }
   return found.colors;
 };
 
-// Sample fantasies for development purposes
 const sampleFantasies: Fantasy[] = [
   {
     id: 1,
@@ -178,6 +220,86 @@ const sampleFantasies: Fantasy[] = [
     fantasy: {
       male: "Take a dance class with {partnerName}",
       female: "Take a dance class with {partnerName}"
+    }
+  },
+  {
+    id: 11,
+    category: "Sensory Play",
+    fantasy: {
+      male: "Blindfold {partnerName} and tease with ice cubes",
+      female: "Be blindfolded by {partnerName} and teased with ice cubes"
+    }
+  },
+  {
+    id: 12,
+    category: "Sensory Play",
+    fantasy: {
+      male: "Use feathers to tease {partnerName}'s body",
+      female: "Have {partnerName} tease your body with feathers"
+    }
+  },
+  {
+    id: 13,
+    category: "Outdoor Adventures",
+    fantasy: {
+      male: "Skinny dipping with {partnerName} at night",
+      female: "Skinny dipping with {partnerName} at night"
+    }
+  },
+  {
+    id: 14,
+    category: "Outdoor Adventures",
+    fantasy: {
+      male: "Go hiking to a secluded spot with {partnerName}",
+      female: "Go hiking to a secluded spot with {partnerName}"
+    }
+  },
+  {
+    id: 15,
+    category: "Spontaneous Encounters",
+    fantasy: {
+      male: "Surprise {partnerName} with intimacy when least expected",
+      female: "Surprise {partnerName} with intimacy when least expected"
+    }
+  },
+  {
+    id: 16,
+    category: "Spontaneous Encounters",
+    fantasy: {
+      male: "Send {partnerName} a suggestive message during work hours",
+      female: "Send {partnerName} a suggestive message during work hours"
+    }
+  },
+  {
+    id: 17,
+    category: "Power Dynamics",
+    fantasy: {
+      male: "Let {partnerName} take complete control in the bedroom",
+      female: "Take complete control in the bedroom with {partnerName}"
+    }
+  },
+  {
+    id: 18,
+    category: "Power Dynamics",
+    fantasy: {
+      male: "Engage in a dominant/submissive roleplay with {partnerName}",
+      female: "Engage in a dominant/submissive roleplay with {partnerName}"
+    }
+  },
+  {
+    id: 19,
+    category: "Erotic Massage",
+    fantasy: {
+      male: "Give {partnerName} a full body massage with essential oils",
+      female: "Receive a full body massage with essential oils from {partnerName}"
+    }
+  },
+  {
+    id: 20,
+    category: "Erotic Massage",
+    fantasy: {
+      male: "Learn professional massage techniques to use on {partnerName}",
+      female: "Have {partnerName} learn professional massage techniques to use on you"
     }
   }
 ];

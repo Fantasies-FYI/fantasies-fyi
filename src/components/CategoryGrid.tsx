@@ -36,27 +36,25 @@ const CategoryGrid = ({
         return (
           <Card 
             key={category} 
-            className="cursor-pointer hover:shadow-md transition-shadow relative"
+            className="cursor-pointer hover:shadow-lg transition-shadow relative border-0 shadow-md"
             style={{
               backgroundColor: colors.background,
-              color: colors.text,
-              borderColor: isComplete ? '#22c55e' : colors.border,
-              borderWidth: isComplete ? '2px' : '1px'
+              color: "#ffffff",
             }}
             onClick={() => onSelectCategory(category)}
           >
             <AspectRatio ratio={1 / 1}>
               <div className="absolute inset-0 p-4 flex flex-col">
                 <CardHeader className="p-0 pb-2 flex-shrink-0">
-                  <CardTitle className="text-xl flex items-center">
+                  <CardTitle className="text-xl flex items-center text-white">
                     <span>{category}</span>
                     {isComplete && (
-                      <Check className="w-5 h-5 ml-2 text-green-500" />
+                      <Check className="w-5 h-5 ml-2 text-white" />
                     )}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-0 flex-1 flex flex-col justify-between">
-                  <div className="text-sm">
+                  <div className="text-sm text-white">
                     <span>{progress?.answered || 0} / {progress?.total || 0}</span>
                   </div>
                   

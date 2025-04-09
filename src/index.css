@@ -95,7 +95,7 @@
   }
 
   .fantasy-card {
-    @apply rounded-xl shadow-lg p-6 border border-gray-800;
+    @apply rounded-xl shadow-lg p-6;
     perspective: 1000px;
   }
   
@@ -109,5 +109,20 @@
   
   .fantasy-button-conditionally {
     @apply bg-amber-500 text-white hover:bg-opacity-90 transition-all;
+  }
+  
+  /* Override for all card components to remove borders */
+  .card, .fantasy-card {
+    @apply border-0 shadow-md;
+  }
+  
+  /* Ensure all card text is white */
+  .card-content, .card-title, .card-description {
+    @apply text-white;
+  }
+  
+  /* Fix onboarding box backgrounds */
+  .bg-muted {
+    @apply bg-gray-800 text-white;
   }
 }

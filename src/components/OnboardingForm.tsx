@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -71,7 +72,7 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
         explore and discover shared sexual fantasies in a safe, comfortable environment.
       </p>
       
-      <div className="bg-muted p-4 rounded-lg mt-4">
+      <div className="bg-gray-800 p-4 rounded-lg mt-4 text-white border-0">
         <p className="text-sm">
           <strong>Note:</strong> Fantasy Shared Hearts is intended for consenting adults only.
           All data is stored locally on your device for privacy.
@@ -95,7 +96,7 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
           You'll each answer questions independently, then share your results to see where your desires align.
         </p>
         
-        <div className="bg-muted p-4 rounded-lg mt-4">
+        <div className="bg-gray-800 p-4 rounded-lg mt-4 text-white border-0">
           <h4 className="font-medium mb-2 text-center">The Process</h4>
           <ol className="text-sm space-y-2 text-left list-decimal pl-4">
             <li>Browse through different fantasy categories</li>
@@ -112,7 +113,7 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
           For each fantasy, you'll have three possible responses. Be honest with your answers!
         </p>
         
-        <div className="bg-muted p-4 rounded-lg mt-4">
+        <div className="bg-gray-800 p-4 rounded-lg mt-4 text-white border-0">
           <h4 className="font-medium mb-3 text-center">Answer Options</h4>
           <div className="text-sm space-y-3 text-left">
             <p className="mb-2">
@@ -248,7 +249,7 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
   );
   
   return (
-    <Card className="w-full max-w-md mx-auto">
+    <Card className="w-full max-w-md mx-auto border-0 shadow-md">
       <CardHeader>
         <CardTitle>Fantasy Shared Hearts</CardTitle>
         <CardDescription>

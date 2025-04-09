@@ -29,19 +29,18 @@ const FantasyCard = ({ fantasy, currentAnswer, onAnswer, isAnswered }: FantasyCa
 
   return (
     <Card 
-      className={`w-full mb-6 ${isAnswered ? 'opacity-90' : 'opacity-100'} transition-opacity`}
+      className={`w-full mb-6 ${isAnswered ? 'opacity-90' : 'opacity-100'} transition-opacity shadow-md border-0`}
       style={{
         backgroundColor: colors.background,
-        color: colors.text,
-        borderColor: colors.border,
+        color: "#ffffff",
         perspective: '1000px'
       }}
     >
       <CardHeader>
-        <CardTitle className="text-center text-xl" style={{ color: colors.text }}>{fantasy.category}</CardTitle>
+        <CardTitle className="text-center text-xl text-white">{fantasy.category}</CardTitle>
       </CardHeader>
       <CardContent className="py-6">
-        <p className="text-lg text-center mb-8">{fantasyText}</p>
+        <p className="text-lg text-center mb-8 text-white">{fantasyText}</p>
       </CardContent>
       <CardFooter className="flex flex-col space-y-2">
         <div className="grid grid-cols-3 gap-2 w-full">
