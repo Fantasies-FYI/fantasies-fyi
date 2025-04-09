@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -10,12 +9,12 @@ import { UserProfile } from "@/data/sampleFantasies";
 import { saveUserProfile } from "@/utils/storage";
 import { toast } from "sonner";
 import { ExtendedUserProfile } from "@/types/user";
-
 interface OnboardingFormProps {
   onComplete: (profile: UserProfile) => void;
 }
-
-const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
+const OnboardingForm = ({
+  onComplete
+}: OnboardingFormProps) => {
   const [step, setStep] = useState(1);
   const [profile, setProfile] = useState<ExtendedUserProfile>({
     name: "",
@@ -23,45 +22,38 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
     ageRange: "23-28",
     partnerName: "",
     partnerGender: "female",
-    completedOnboarding: false,
+    completedOnboarding: false
   });
-  
   const handleNext = () => {
     if (step === 1) {
       setStep(step + 1);
       return;
     }
-    
     if (step === 2) {
       setStep(step + 1);
       return;
     }
-    
     if (step === 3 && (!profile.name || !profile.gender || !profile.ageRange || !profile.partnerName || !profile.partnerGender)) {
       toast.error("Please fill out all fields");
       return;
     }
-    
     if (step < 4) {
       setStep(step + 1);
     } else {
       const baseProfile: UserProfile = {
         ...profile,
-        completedOnboarding: true,
+        completedOnboarding: true
       };
       saveUserProfile(baseProfile);
       onComplete(baseProfile);
     }
   };
-  
   const handlePrevious = () => {
     if (step > 1) {
       setStep(step - 1);
     }
   };
-  
-  const renderStep1 = () => (
-    <CardContent className="space-y-4">
+  const renderStep1 = () => <CardContent className="space-y-4">
       <div className="text-center mb-6">
         <h3 className="text-xl font-semibold mb-2">Welcome to Fantasy Shared Hearts</h3>
         <p className="text-muted-foreground">Explore your hidden pleasures</p>
@@ -84,11 +76,8 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
         Simply answer a series of questions, and have your partner do the same. If your interests match, 
         they will be revealed at the end of your session. No awkward conversations necessary.
       </p>
-    </CardContent>
-  );
-  
-  const renderStep2 = () => (
-    <CardContent className="space-y-4">
+    </CardContent>;
+  const renderStep2 = () => <CardContent className="space-y-4">
       <div className="text-center space-y-4">
         <h3 className="text-lg font-medium">How Fantasy Shared Hearts Works</h3>
         <p className="mb-2">
@@ -138,27 +127,22 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
           but that would also make you a dick. The focus is on finding common ground rather than exposing all preferences.
         </p>
       </div>
-    </CardContent>
-  );
-  
-  const renderStep3 = () => (
-    <CardContent className="space-y-4">
+    </CardContent>;
+  const renderStep3 = () => <CardContent className="space-y-4">
       <div className="space-y-2">
         <Label htmlFor="name">Your Name</Label>
-        <Input
-          id="name"
-          placeholder="Enter name"
-          value={profile.name}
-          onChange={(e) => setProfile({ ...profile, name: e.target.value })}
-        />
+        <Input id="name" placeholder="Enter name" value={profile.name} onChange={e => setProfile({
+        ...profile,
+        name: e.target.value
+      })} />
       </div>
       
       <div className="space-y-2">
         <Label>Your Gender</Label>
-        <RadioGroup
-          value={profile.gender}
-          onValueChange={(value) => setProfile({ ...profile, gender: value as "male" | "female" })}
-        >
+        <RadioGroup value={profile.gender} onValueChange={value => setProfile({
+        ...profile,
+        gender: value as "male" | "female"
+      })}>
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="male" id="male" />
             <Label htmlFor="male">Male</Label>
@@ -172,15 +156,10 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
       
       <div className="space-y-2">
         <Label htmlFor="age-range">Your Age Range</Label>
-        <Select
-          value={profile.ageRange}
-          onValueChange={(value) => 
-            setProfile({ 
-              ...profile, 
-              ageRange: value as "18-22" | "23-28" | "29-35" | "36-45" | "46-55" | "over55" 
-            })
-          }
-        >
+        <Select value={profile.ageRange} onValueChange={value => setProfile({
+        ...profile,
+        ageRange: value as "18-22" | "23-28" | "29-35" | "36-45" | "46-55" | "over55"
+      })}>
           <SelectTrigger id="age-range">
             <SelectValue placeholder="Choose your age range" />
           </SelectTrigger>
@@ -197,20 +176,18 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
       
       <div className="space-y-2 mt-6">
         <Label htmlFor="partner-name">Partner's Name</Label>
-        <Input
-          id="partner-name"
-          placeholder="Enter partner's name"
-          value={profile.partnerName}
-          onChange={(e) => setProfile({ ...profile, partnerName: e.target.value })}
-        />
+        <Input id="partner-name" placeholder="Enter partner's name" value={profile.partnerName} onChange={e => setProfile({
+        ...profile,
+        partnerName: e.target.value
+      })} />
       </div>
       
       <div className="space-y-2">
         <Label>Partner's Gender</Label>
-        <RadioGroup
-          value={profile.partnerGender}
-          onValueChange={(value) => setProfile({ ...profile, partnerGender: value as "male" | "female" })}
-        >
+        <RadioGroup value={profile.partnerGender} onValueChange={value => setProfile({
+        ...profile,
+        partnerGender: value as "male" | "female"
+      })}>
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="male" id="partner-male" />
             <Label htmlFor="partner-male">Male</Label>
@@ -221,11 +198,8 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
           </div>
         </RadioGroup>
       </div>
-    </CardContent>
-  );
-  
-  const renderStep4 = () => (
-    <CardContent className="space-y-4">
+    </CardContent>;
+  const renderStep4 = () => <CardContent className="space-y-4">
       <div className="text-center space-y-4">
         <h3 className="text-lg font-medium">Privacy & Security</h3>
         <p className="mb-4">
@@ -245,20 +219,12 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
           Ready to start exploring your hidden desires together?
         </p>
       </div>
-    </CardContent>
-  );
-  
-  return (
-    <Card className="w-full max-w-md mx-auto border-0 shadow-md">
+    </CardContent>;
+  return <Card className="w-full max-w-md mx-auto border-0 shadow-md">
       <CardHeader>
-        <CardTitle>Fantasy Shared Hearts</CardTitle>
+        <CardTitle>Welcome</CardTitle>
         <CardDescription>
-          Step {step} of 4: {
-            step === 1 ? "Welcome & Introduction" : 
-            step === 2 ? "How It Works & Answer Options" : 
-            step === 3 ? "Personal Information" : 
-            "Privacy & Final Notes"
-          }
+          Step {step} of 4: {step === 1 ? "Welcome & Introduction" : step === 2 ? "How It Works & Answer Options" : step === 3 ? "Personal Information" : "Privacy & Final Notes"}
         </CardDescription>
       </CardHeader>
       
@@ -275,8 +241,6 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
           {step < 4 ? "Next" : "Start"}
         </Button>
       </CardFooter>
-    </Card>
-  );
+    </Card>;
 };
-
 export default OnboardingForm;
