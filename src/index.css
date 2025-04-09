@@ -90,7 +90,7 @@
   }
 
   body {
-    @apply bg-gradient-to-b from-fantasy-secondary to-fantasy-background text-foreground min-h-screen;
+    @apply bg-black text-foreground min-h-screen;
   }
 
   .fantasy-card {
@@ -108,5 +108,9 @@
   
   .fantasy-button-conditionally {
     @apply bg-fantasy-conditionally text-white hover:bg-opacity-90 transition-all;
+  }
+
+  .onboarding-illustration {
+    @apply mx-auto mb-6 opacity-90;
   }
 }

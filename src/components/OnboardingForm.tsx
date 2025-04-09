@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,6 +10,12 @@ import { UserProfile } from "@/data/sampleFantasies";
 import { saveUserProfile } from "@/utils/storage";
 import { toast } from "sonner";
 import { ExtendedUserProfile } from "@/types/user";
+import { 
+  WelcomeIllustration, 
+  HowItWorksIllustration, 
+  PersonalInfoIllustration, 
+  PrivacyIllustration 
+} from "./OnboardingIllustrations";
 
 interface OnboardingFormProps {
   onComplete: (profile: UserProfile) => void;
@@ -61,6 +68,8 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
   
   const renderStep1 = () => (
     <CardContent className="space-y-4">
+      <WelcomeIllustration className="onboarding-illustration" />
+      
       <div className="text-center mb-6">
         <h3 className="text-xl font-semibold mb-2">Welcome to Fantasy Shared Hearts</h3>
         <p className="text-muted-foreground">Explore your hidden pleasures</p>
@@ -88,6 +97,8 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
   
   const renderStep2 = () => (
     <CardContent className="space-y-4">
+      <HowItWorksIllustration className="onboarding-illustration" />
+      
       <div className="text-center space-y-4">
         <h3 className="text-lg font-medium">How Fantasy Shared Hearts Works</h3>
         <p className="mb-2">
@@ -142,6 +153,8 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
   
   const renderStep3 = () => (
     <CardContent className="space-y-4">
+      <PersonalInfoIllustration className="onboarding-illustration" />
+      
       <div className="space-y-2">
         <Label htmlFor="name">Your Name</Label>
         <Input
@@ -225,6 +238,8 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
   
   const renderStep4 = () => (
     <CardContent className="space-y-4">
+      <PrivacyIllustration className="onboarding-illustration" />
+      
       <div className="text-center space-y-4">
         <h3 className="text-lg font-medium">Privacy & Security</h3>
         <p className="mb-4">
@@ -248,10 +263,10 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
   );
   
   return (
-    <Card className="w-full max-w-md mx-auto">
+    <Card className="w-full max-w-md mx-auto bg-black/60 border border-white/20 text-white">
       <CardHeader>
         <CardTitle>Fantasy Shared Hearts</CardTitle>
-        <CardDescription>
+        <CardDescription className="text-gray-300">
           Step {step} of 4: {
             step === 1 ? "Welcome & Introduction" : 
             step === 2 ? "How It Works & Answer Options" : 
@@ -267,10 +282,10 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
       {step === 4 && renderStep4()}
       
       <CardFooter className="flex justify-between">
-        <Button variant="outline" onClick={handlePrevious} disabled={step === 1}>
+        <Button variant="outline" onClick={handlePrevious} disabled={step === 1} className="border-white/30 text-white hover:bg-white/10">
           Back
         </Button>
-        <Button onClick={handleNext}>
+        <Button onClick={handleNext} className="bg-fantasy-primary hover:bg-opacity-90">
           {step < 4 ? "Next" : "Start"}
         </Button>
       </CardFooter>
