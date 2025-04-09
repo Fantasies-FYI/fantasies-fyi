@@ -90,12 +90,7 @@
   }
 
   body {
-    @apply bg-black text-foreground min-h-screen;
-  }
-
-  html, body {
-    background-color: #000000;
-    color: white;
+    @apply bg-gradient-to-b from-fantasy-secondary to-fantasy-background text-foreground min-h-screen;
   }
 
   .fantasy-card {
@@ -114,10 +109,4 @@
   .fantasy-button-conditionally {
     @apply bg-fantasy-conditionally text-white hover:bg-opacity-90 transition-all;
   }
-}
-
-/* Add enhanced visibility for onboarding illustrations */
-.onboarding-illustration {
-  opacity: 0.15 !important;
-  z-index: 0;
 }
