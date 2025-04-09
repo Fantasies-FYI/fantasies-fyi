@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,6 +10,12 @@ import { UserProfile } from "@/data/sampleFantasies";
 import { saveUserProfile } from "@/utils/storage";
 import { toast } from "sonner";
 import { ExtendedUserProfile } from "@/types/user";
+import { 
+  WelcomeIllustration, 
+  HowItWorksIllustration, 
+  ProfileIllustration, 
+  PrivacyIllustration 
+} from "@/components/OnboardingIllustrations";
 
 interface OnboardingFormProps {
   onComplete: (profile: UserProfile) => void;
@@ -60,25 +67,26 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
   };
   
   const renderStep1 = () => (
-    <CardContent className="space-y-4">
-      <div className="text-center mb-6">
+    <CardContent className="space-y-4 relative">
+      <WelcomeIllustration />
+      <div className="text-center mb-6 relative z-10">
         <h3 className="text-xl font-semibold mb-2">Welcome to Fantasy Shared Hearts</h3>
         <p className="text-muted-foreground">Explore your hidden pleasures</p>
       </div>
       
-      <p className="mb-4">
+      <p className="mb-4 relative z-10">
         Fantasy Shared Hearts is an interactive questionnaire designed to help you and your partner
         explore and discover shared sexual fantasies in a safe, comfortable environment.
       </p>
       
-      <div className="bg-muted p-4 rounded-lg mt-4">
+      <div className="bg-muted p-4 rounded-lg mt-4 relative z-10">
         <p className="text-sm">
           <strong>Note:</strong> Fantasy Shared Hearts is intended for consenting adults only.
           All data is stored locally on your device for privacy.
         </p>
       </div>
       
-      <p className="mb-4">
+      <p className="mb-4 relative z-10">
         Fantasies.fyi is a questionnaire designed for you to explore all of your sexual fantasies without limits.
         Simply answer a series of questions, and have your partner do the same. If your interests match, 
         they will be revealed at the end of your session. No awkward conversations necessary.
@@ -87,8 +95,9 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
   );
   
   const renderStep2 = () => (
-    <CardContent className="space-y-4">
-      <div className="text-center space-y-4">
+    <CardContent className="space-y-4 relative">
+      <HowItWorksIllustration />
+      <div className="text-center space-y-4 relative z-10">
         <h3 className="text-lg font-medium">How Fantasy Shared Hearts Works</h3>
         <p className="mb-2">
           This app helps you discover sexual fantasies that both you and your partner are interested in.
@@ -106,7 +115,7 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
         </div>
       </div>
       
-      <div className="text-center space-y-4 mt-6">
+      <div className="text-center space-y-4 mt-6 relative z-10">
         <h3 className="text-lg font-medium">Understanding Answer Options</h3>
         <p>
           For each fantasy, you'll have three possible responses. Be honest with your answers!
@@ -141,8 +150,9 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
   );
   
   const renderStep3 = () => (
-    <CardContent className="space-y-4">
-      <div className="space-y-2">
+    <CardContent className="space-y-4 relative">
+      <ProfileIllustration />
+      <div className="space-y-2 relative z-10">
         <Label htmlFor="name">Your Name</Label>
         <Input
           id="name"
@@ -152,7 +162,7 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
         />
       </div>
       
-      <div className="space-y-2">
+      <div className="space-y-2 relative z-10">
         <Label>Your Gender</Label>
         <RadioGroup
           value={profile.gender}
@@ -169,7 +179,7 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
         </RadioGroup>
       </div>
       
-      <div className="space-y-2">
+      <div className="space-y-2 relative z-10">
         <Label htmlFor="age-range">Your Age Range</Label>
         <Select
           value={profile.ageRange}
@@ -194,7 +204,7 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
         </Select>
       </div>
       
-      <div className="space-y-2 mt-6">
+      <div className="space-y-2 mt-6 relative z-10">
         <Label htmlFor="partner-name">Partner's Name</Label>
         <Input
           id="partner-name"
@@ -204,7 +214,7 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
         />
       </div>
       
-      <div className="space-y-2">
+      <div className="space-y-2 relative z-10">
         <Label>Partner's Gender</Label>
         <RadioGroup
           value={profile.partnerGender}
@@ -224,8 +234,9 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
   );
   
   const renderStep4 = () => (
-    <CardContent className="space-y-4">
-      <div className="text-center space-y-4">
+    <CardContent className="space-y-4 relative">
+      <PrivacyIllustration />
+      <div className="text-center space-y-4 relative z-10">
         <h3 className="text-lg font-medium">Privacy & Security</h3>
         <p className="mb-4">
           Fantasy Shared Hearts stores all your data locally on your device. No data is sent to servers.
@@ -248,7 +259,7 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
   );
   
   return (
-    <Card className="w-full max-w-md mx-auto">
+    <Card className="w-full max-w-md mx-auto bg-opacity-95 backdrop-blur-sm">
       <CardHeader>
         <CardTitle>Fantasy Shared Hearts</CardTitle>
         <CardDescription>
