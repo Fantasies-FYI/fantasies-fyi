@@ -79,7 +79,7 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
         explore and discover shared sexual fantasies in a safe, comfortable environment.
       </p>
       
-      <div className="bg-muted p-4 rounded-lg mt-4 relative z-10">
+      <div className="bg-gray-900/50 p-4 rounded-lg mt-4 relative z-10 border border-gray-800">
         <p className="text-sm">
           <strong>Note:</strong> Fantasy Shared Hearts is intended for consenting adults only.
           All data is stored locally on your device for privacy.
@@ -104,7 +104,7 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
           You'll each answer questions independently, then share your results to see where your desires align.
         </p>
         
-        <div className="bg-muted p-4 rounded-lg mt-4">
+        <div className="bg-gray-900/50 p-4 rounded-lg mt-4 border border-gray-800">
           <h4 className="font-medium mb-2 text-center">The Process</h4>
           <ol className="text-sm space-y-2 text-left list-decimal pl-4">
             <li>Browse through different fantasy categories</li>
@@ -121,7 +121,7 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
           For each fantasy, you'll have three possible responses. Be honest with your answers!
         </p>
         
-        <div className="bg-muted p-4 rounded-lg mt-4">
+        <div className="bg-gray-900/50 p-4 rounded-lg mt-4 border border-gray-800">
           <h4 className="font-medium mb-3 text-center">Answer Options</h4>
           <div className="text-sm space-y-3 text-left">
             <p className="mb-2">
@@ -259,10 +259,10 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
   );
   
   return (
-    <Card className="w-full max-w-md mx-auto bg-opacity-95 backdrop-blur-sm">
-      <CardHeader>
+    <Card className="w-full max-w-md mx-auto bg-gray-900/70 backdrop-blur-sm border border-gray-800 text-white">
+      <CardHeader className="border-b border-gray-800">
         <CardTitle>Fantasy Shared Hearts</CardTitle>
-        <CardDescription>
+        <CardDescription className="text-gray-300">
           Step {step} of 4: {
             step === 1 ? "Welcome & Introduction" : 
             step === 2 ? "How It Works & Answer Options" : 
@@ -277,11 +277,12 @@ const OnboardingForm = ({ onComplete }: OnboardingFormProps) => {
       {step === 3 && renderStep3()}
       {step === 4 && renderStep4()}
       
-      <CardFooter className="flex justify-between">
-        <Button variant="outline" onClick={handlePrevious} disabled={step === 1}>
+      <CardFooter className="flex justify-between border-t border-gray-800 mt-2">
+        <Button variant="outline" onClick={handlePrevious} disabled={step === 1} 
+          className="border-gray-700 hover:bg-gray-800">
           Back
         </Button>
-        <Button onClick={handleNext}>
+        <Button onClick={handleNext} className="bg-purple-700 hover:bg-purple-600">
           {step < 4 ? "Next" : "Start"}
         </Button>
       </CardFooter>

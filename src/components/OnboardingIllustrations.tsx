@@ -3,7 +3,7 @@ import React from "react";
 
 export const WelcomeIllustration = () => (
   <svg
-    className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none"
+    className="absolute top-0 left-0 w-full h-full opacity-15 pointer-events-none onboarding-illustration"
     viewBox="0 0 800 600"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +38,7 @@ export const WelcomeIllustration = () => (
 
 export const HowItWorksIllustration = () => (
   <svg
-    className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none"
+    className="absolute top-0 left-0 w-full h-full opacity-15 pointer-events-none onboarding-illustration"
     viewBox="0 0 800 600"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -78,7 +78,7 @@ export const HowItWorksIllustration = () => (
 
 export const ProfileIllustration = () => (
   <svg
-    className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none"
+    className="absolute top-0 left-0 w-full h-full opacity-15 pointer-events-none onboarding-illustration"
     viewBox="0 0 800 600"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +114,7 @@ export const ProfileIllustration = () => (
 
 export const PrivacyIllustration = () => (
   <svg
-    className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none"
+    className="absolute top-0 left-0 w-full h-full opacity-15 pointer-events-none onboarding-illustration"
     viewBox="0 0 800 600"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

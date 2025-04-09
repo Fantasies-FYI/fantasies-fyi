@@ -93,6 +93,11 @@
     @apply bg-black text-foreground min-h-screen;
   }
 
+  html, body {
+    background-color: #000000;
+    color: white;
+  }
+
   .fantasy-card {
     @apply bg-white rounded-xl shadow-lg p-6 border border-gray-100;
     perspective: 1000px;
@@ -109,4 +114,10 @@
   .fantasy-button-conditionally {
     @apply bg-fantasy-conditionally text-white hover:bg-opacity-90 transition-all;
   }
+}
+
+/* Add enhanced visibility for onboarding illustrations */
+.onboarding-illustration {
+  opacity: 0.15 !important;
+  z-index: 0;
 }
