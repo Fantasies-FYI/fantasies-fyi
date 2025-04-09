@@ -2,7 +2,7 @@
 import React from "react";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Fantasy, AnswerType } from "@/data/sampleFantasies";
+import { Fantasy, AnswerType, getCategoryColors } from "@/data/sampleFantasies";
 import { getUserProfile } from "@/utils/storage";
 
 interface FantasyCardProps {
@@ -21,15 +21,24 @@ const FantasyCard = ({ fantasy, currentAnswer, onAnswer, isAnswered }: FantasyCa
   
   const gender = profile.gender;
   const partnerName = profile.partnerName;
+  const colors = getCategoryColors(fantasy.category);
   
   const fantasyText = gender === "male" 
     ? fantasy.fantasy.male.replace("{partnerName}", partnerName)
     : fantasy.fantasy.female.replace("{partnerName}", partnerName);
 
   return (
-    <Card className={`fantasy-card w-full mb-6 ${isAnswered ? 'opacity-90' : 'opacity-100'} transition-opacity`}>
+    <Card 
+      className={`w-full mb-6 ${isAnswered ? 'opacity-90' : 'opacity-100'} transition-opacity`}
+      style={{
+        backgroundColor: colors.background,
+        color: colors.text,
+        borderColor: colors.border,
+        perspective: '1000px'
+      }}
+    >
       <CardHeader>
-        <CardTitle className="text-center text-xl text-fantasy-primary">{fantasy.category}</CardTitle>
+        <CardTitle className="text-center text-xl" style={{ color: colors.text }}>{fantasy.category}</CardTitle>
       </CardHeader>
       <CardContent className="py-6">
         <p className="text-lg text-center mb-8">{fantasyText}</p>

@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Fantasy, FantasyCategory } from "@/data/sampleFantasies";
+import { FantasyCategory, getCategoryColors } from "@/data/sampleFantasies";
 
 interface CategorySelectorProps {
   categories: FantasyCategory[];
@@ -22,16 +22,19 @@ const CategorySelector = ({
         {categories.map((category) => {
           const progress = categoryProgress[category];
           const percentage = progress ? Math.round((progress.answered / progress.total) * 100) : 0;
+          const colors = getCategoryColors(category);
+          const isActive = category === activeCategory;
           
           return (
             <Button
               key={category}
-              variant={category === activeCategory ? "default" : "outline"}
-              className={`whitespace-nowrap ${
-                category === activeCategory 
-                  ? "bg-primary text-primary-foreground" 
-                  : "text-foreground"
-              }`}
+              variant="outline"
+              style={{
+                backgroundColor: isActive ? colors.background : 'transparent',
+                color: isActive ? colors.text : 'currentColor',
+                borderColor: colors.border
+              }}
+              className="whitespace-nowrap transition-colors"
               onClick={() => onSelectCategory(category)}
             >
               {category}

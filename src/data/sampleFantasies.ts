@@ -8,6 +8,17 @@ export type FantasyCategory =
 
 export type AnswerType = "interested" | "notInterested" | "conditionally" | null;
 
+export interface CategoryColors {
+  background: string;
+  text: string;
+  border: string;
+}
+
+export interface CategoryData {
+  name: FantasyCategory;
+  colors: CategoryColors;
+}
+
 export interface Fantasy {
   id: number;
   category: FantasyCategory;
@@ -29,6 +40,63 @@ export interface UserProfile {
   partnerName: string;
   completedOnboarding: boolean;
 }
+
+export const categoryData: CategoryData[] = [
+  {
+    name: "Romantic Fantasies",
+    colors: {
+      background: "#1e3a8a", // deep blue
+      text: "#ffffff",
+      border: "#3b82f6"
+    }
+  },
+  {
+    name: "Role Play",
+    colors: {
+      background: "#7c2d12", // deep orange/brown
+      text: "#ffffff",
+      border: "#f97316"
+    }
+  },
+  {
+    name: "Locations",
+    colors: {
+      background: "#065f46", // deep green
+      text: "#ffffff",
+      border: "#10b981"
+    }
+  },
+  {
+    name: "Positions",
+    colors: {
+      background: "#4c1d95", // deep purple
+      text: "#ffffff",
+      border: "#8b5cf6"
+    }
+  },
+  {
+    name: "Accessories",
+    colors: {
+      background: "#831843", // deep pink/magenta
+      text: "#ffffff",
+      border: "#ec4899"
+    }
+  }
+];
+
+// Helper function to get colors for a category
+export const getCategoryColors = (category: FantasyCategory): CategoryColors => {
+  const found = categoryData.find(cat => cat.name === category);
+  if (!found) {
+    // Default colors if category not found
+    return {
+      background: "#1e293b",
+      text: "#ffffff",
+      border: "#475569"
+    };
+  }
+  return found.colors;
+};
 
 // Sample fantasies for development purposes
 const sampleFantasies: Fantasy[] = [
