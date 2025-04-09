@@ -1,124 +1,166 @@
 
 import React from "react";
 
-interface IllustrationProps {
-  className?: string;
-}
-
-export const WelcomeIllustration: React.FC<IllustrationProps> = ({ className }) => (
+export const WelcomeIllustration = () => (
   <svg
-    width="200"
-    height="200"
-    viewBox="0 0 200 200"
+    className="absolute top-0 left-0 w-full h-full opacity-15 pointer-events-none onboarding-illustration"
+    viewBox="0 0 800 600"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    className={className}
   >
     <path
-      d="M40,120 C40,80 60,60 100,60 C140,60 160,80 160,120"
+      d="M400 100C500 100 580 180 580 280C580 380 500 460 400 460C300 460 220 380 220 280C220 180 300 100 400 100Z"
       stroke="white"
-      strokeWidth="1.5"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeDasharray="10 10"
+    />
+    <path
+      d="M350 180L450 180L450 380L350 380L350 180Z"
+      stroke="white"
+      strokeWidth="2"
       strokeLinecap="round"
     />
     <path
-      d="M60,140 C90,120 110,120 140,140"
+      d="M300 220L500 220"
       stroke="white"
-      strokeWidth="1.5"
+      strokeWidth="2"
       strokeLinecap="round"
     />
-    <circle cx="100" cy="80" r="8" stroke="white" strokeWidth="1.5" fill="none" />
-    <circle cx="70" cy="100" r="4" stroke="white" strokeWidth="1.5" fill="none" />
-    <circle cx="130" cy="100" r="4" stroke="white" strokeWidth="1.5" fill="none" />
     <path
-      d="M85,95 C90,100 110,100 115,95"
+      d="M300 340L500 340"
       stroke="white"
-      strokeWidth="1.5"
+      strokeWidth="2"
       strokeLinecap="round"
     />
   </svg>
 );
 
-export const HowItWorksIllustration: React.FC<IllustrationProps> = ({ className }) => (
+export const HowItWorksIllustration = () => (
   <svg
-    width="200"
-    height="200"
-    viewBox="0 0 200 200"
+    className="absolute top-0 left-0 w-full h-full opacity-15 pointer-events-none onboarding-illustration"
+    viewBox="0 0 800 600"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    className={className}
   >
     <path
-      d="M40,100 C40,60 100,40 160,100 C100,160 40,140 40,100 Z"
+      d="M200 200C200 189.5 208.5 181 219 181H581C591.5 181 600 189.5 600 200V400C600 410.5 591.5 419 581 419H219C208.5 419 200 410.5 200 400V200Z"
       stroke="white"
-      strokeWidth="1.5"
+      strokeWidth="2"
       strokeLinecap="round"
-      fill="none"
-    />
-    <line x1="40" y1="100" x2="160" y2="100" stroke="white" strokeWidth="1.5" strokeDasharray="4 4" />
-    <line x1="100" y1="40" x2="100" y2="160" stroke="white" strokeWidth="1.5" strokeDasharray="4 4" />
-    <circle cx="100" cy="100" r="10" stroke="white" strokeWidth="1.5" fill="none" />
-    <circle cx="100" cy="100" r="20" stroke="white" strokeWidth="1" fill="none" strokeDasharray="2 2" />
-    <circle cx="100" cy="100" r="30" stroke="white" strokeWidth="0.5" fill="none" strokeDasharray="1 1" />
-  </svg>
-);
-
-export const PersonalInfoIllustration: React.FC<IllustrationProps> = ({ className }) => (
-  <svg
-    width="200"
-    height="200"
-    viewBox="0 0 200 200"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className={className}
-  >
-    <circle cx="100" cy="70" r="20" stroke="white" strokeWidth="1.5" fill="none" />
-    <path
-      d="M70,130 C70,110 85,100 100,100 C115,100 130,110 130,130"
-      stroke="white"
-      strokeWidth="1.5"
-      fill="none"
     />
     <path
-      d="M60,150 C60,140 75,130 100,130 C125,130 140,140 140,150"
+      d="M300 230L500 230"
       stroke="white"
-      strokeWidth="1.5"
-      fill="none"
+      strokeWidth="2"
+      strokeLinecap="round"
     />
-    <line x1="60" y1="150" x2="140" y2="150" stroke="white" strokeWidth="1.5" />
     <path
-      d="M90,70 A10,10 0 0,1 110,70"
+      d="M300 270L460 270"
       stroke="white"
-      strokeWidth="1.5"
-      fill="none"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M300 310L440 310"
+      stroke="white"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M300 350L420 350"
+      stroke="white"
+      strokeWidth="2"
       strokeLinecap="round"
     />
   </svg>
 );
 
-export const PrivacyIllustration: React.FC<IllustrationProps> = ({ className }) => (
+export const ProfileIllustration = () => (
   <svg
-    width="200"
-    height="200"
-    viewBox="0 0 200 200"
+    className="absolute top-0 left-0 w-full h-full opacity-15 pointer-events-none onboarding-illustration"
+    viewBox="0 0 800 600"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    className={className}
   >
-    <rect x="70" y="70" width="60" height="80" rx="5" stroke="white" strokeWidth="1.5" fill="none" />
-    <rect x="80" y="100" width="40" height="30" rx="3" stroke="white" strokeWidth="1.5" fill="none" />
-    <circle cx="100" cy="90" r="10" stroke="white" strokeWidth="1.5" fill="none" />
-    <path
-      d="M100,80 L100,60"
+    <circle
+      cx="400"
+      cy="180"
+      r="60"
       stroke="white"
-      strokeWidth="1.5"
+      strokeWidth="2"
       strokeLinecap="round"
     />
     <path
-      d="M85,70 L115,70"
+      d="M320 300C320 255.8 356.9 220 400 220C443.1 220 480 255.8 480 300V380C480 393 470 400 450 400H350C330 400 320 393 320 380V300Z"
       stroke="white"
-      strokeWidth="1.5"
+      strokeWidth="2"
       strokeLinecap="round"
     />
-    <circle cx="100" cy="115" r="3" stroke="white" strokeWidth="1.5" fill="none" />
+    <path
+      d="M300 440L500 440"
+      stroke="white"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M340 480L460 480"
+      stroke="white"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
+export const PrivacyIllustration = () => (
+  <svg
+    className="absolute top-0 left-0 w-full h-full opacity-15 pointer-events-none onboarding-illustration"
+    viewBox="0 0 800 600"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect
+      x="300"
+      y="150"
+      width="200"
+      height="300"
+      rx="20"
+      stroke="white"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <circle
+      cx="400"
+      cy="230"
+      r="40"
+      stroke="white"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M370 220L390 240L430 200"
+      stroke="white"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M340 300L460 300"
+      stroke="white"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M340 340L460 340"
+      stroke="white"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M340 380L460 380"
+      stroke="white"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
   </svg>
 );
