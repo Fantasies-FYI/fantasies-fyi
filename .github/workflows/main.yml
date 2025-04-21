@@ -32,5 +32,5 @@ jobs:
         with:
           github_token: ${{ secrets.GH_PAT }}
           publish_dir: ./dist
-          cname: https://fantasies-fyi.github.io/fantasy-fyi/
+          cname: fantasies.fyi
           force_orphan: true
