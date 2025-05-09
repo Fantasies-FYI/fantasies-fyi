@@ -9,9 +9,11 @@ import { UserProfile } from "@/data/sampleFantasies";
 import { saveUserProfile } from "@/utils/storage";
 import { toast } from "sonner";
 import { ExtendedUserProfile } from "@/types/user";
+
 interface OnboardingFormProps {
   onComplete: (profile: UserProfile) => void;
 }
+
 const OnboardingForm = ({
   onComplete
 }: OnboardingFormProps) => {
@@ -234,13 +236,19 @@ const OnboardingForm = ({
       {step === 4 && renderStep4()}
       
       <CardFooter className="flex justify-between">
-        <Button variant="outline" onClick={handlePrevious} disabled={step === 1}>
-          Back
-        </Button>
+        {/* Only show the Back button if not on step 1 */}
+        {step > 1 ? (
+          <Button variant="outline" onClick={handlePrevious}>
+            Back
+          </Button>
+        ) : (
+          <div></div> {/* Empty div to maintain the spacing */}
+        )}
         <Button onClick={handleNext}>
           {step < 4 ? "Next" : "Start"}
         </Button>
       </CardFooter>
     </Card>;
 };
+
 export default OnboardingForm;
