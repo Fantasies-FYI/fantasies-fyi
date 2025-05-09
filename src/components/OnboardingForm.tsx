@@ -55,6 +55,7 @@ const OnboardingForm = ({
       setStep(step - 1);
     }
   };
+  
   const renderStep1 = () => <CardContent className="space-y-4">
       <div className="text-center mb-6">
         <h3 className="text-xl font-semibold mb-2">Welcome to Fantasy Shared Hearts</h3>
@@ -79,6 +80,7 @@ const OnboardingForm = ({
         they will be revealed at the end of your session. No awkward conversations necessary.
       </p>
     </CardContent>;
+  
   const renderStep2 = () => <CardContent className="space-y-4">
       <div className="text-center space-y-4">
         <h3 className="text-lg font-medium">How Fantasy Shared Hearts Works</h3>
@@ -130,6 +132,7 @@ const OnboardingForm = ({
         </p>
       </div>
     </CardContent>;
+  
   const renderStep3 = () => <CardContent className="space-y-4">
       <div className="space-y-2">
         <Label htmlFor="name">Your Name</Label>
@@ -201,6 +204,7 @@ const OnboardingForm = ({
         </RadioGroup>
       </div>
     </CardContent>;
+  
   const renderStep4 = () => <CardContent className="space-y-4">
       <div className="text-center space-y-4">
         <h3 className="text-lg font-medium">Privacy & Security</h3>
@@ -222,6 +226,7 @@ const OnboardingForm = ({
         </p>
       </div>
     </CardContent>;
+  
   return <Card className="w-full max-w-md mx-auto border-0 shadow-md">
       <CardHeader>
         <CardTitle>Welcome</CardTitle>
@@ -236,13 +241,12 @@ const OnboardingForm = ({
       {step === 4 && renderStep4()}
       
       <CardFooter className="flex justify-between">
-        {/* Only show the Back button if not on step 1 */}
         {step > 1 ? (
           <Button variant="outline" onClick={handlePrevious}>
             Back
           </Button>
         ) : (
-          <div></div> {/* Empty div to maintain the spacing */}
+          <div>{/* Empty div to maintain the spacing */}</div>
         )}
         <Button onClick={handleNext}>
           {step < 4 ? "Next" : "Start"}
