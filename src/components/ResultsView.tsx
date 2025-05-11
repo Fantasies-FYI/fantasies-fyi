@@ -72,10 +72,8 @@ const ResultsView = ({
               <h3 className="text-xl font-semibold mb-4">{category}</h3>
               
               {fantasies.map(fantasy => {
-                const gender = profile.gender;
-                const fantasyText = gender === "male" 
-                  ? fantasy.fantasy.male.replace("{partnerName}", partnerName)
-                  : fantasy.fantasy.female.replace("{partnerName}", partnerName);
+                // Use the new result text instead of gender-specific text
+                const fantasyText = fantasy.fantasy.result;
                 
                 const colors = getCategoryColors(fantasy.category);
                 

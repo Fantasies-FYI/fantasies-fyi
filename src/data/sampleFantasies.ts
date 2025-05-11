@@ -1,3 +1,4 @@
+
 export type FantasyCategory = 
   | "Romantic Fantasies"
   | "Role Play"
@@ -29,6 +30,7 @@ export interface Fantasy {
   fantasy: {
     male: string;
     female: string;
+    result: string; // Added result text
   };
 }
 
@@ -147,7 +149,8 @@ const sampleFantasies: Fantasy[] = [
     category: "Romantic Fantasies",
     fantasy: {
       male: "Enjoy a romantic candle-lit dinner with {partnerName}",
-      female: "Enjoy a romantic candle-lit dinner with {partnerName}"
+      female: "Enjoy a romantic candle-lit dinner with {partnerName}",
+      result: "Enjoy a romantic candle-lit dinner together"
     }
   },
   {
@@ -155,7 +158,8 @@ const sampleFantasies: Fantasy[] = [
     category: "Romantic Fantasies",
     fantasy: {
       male: "Experience a sunset on the beach with {partnerName}",
-      female: "Experience a sunset on the beach with {partnerName}"
+      female: "Experience a sunset on the beach with {partnerName}",
+      result: "Experience a sunset on the beach together"
     }
   },
   {
@@ -163,7 +167,8 @@ const sampleFantasies: Fantasy[] = [
     category: "Role Play",
     fantasy: {
       male: "Experience a role-play as doctor and patient with {partnerName}",
-      female: "Experience a role-play as doctor and patient with {partnerName}"
+      female: "Experience a role-play as doctor and patient with {partnerName}",
+      result: "Experience a role-play as doctor and patient"
     }
   },
   {
@@ -171,7 +176,8 @@ const sampleFantasies: Fantasy[] = [
     category: "Role Play",
     fantasy: {
       male: "Conduct a role-play as strangers with {partnerName}",
-      female: "Conduct a role-play as strangers with {partnerName}"
+      female: "Conduct a role-play as strangers with {partnerName}",
+      result: "Conduct a role-play as strangers meeting for the first time"
     }
   },
   {
@@ -179,7 +185,8 @@ const sampleFantasies: Fantasy[] = [
     category: "Locations",
     fantasy: {
       male: "Experience intimacy with {partnerName} outdoors",
-      female: "Experience intimacy with {partnerName} outdoors"
+      female: "Experience intimacy with {partnerName} outdoors",
+      result: "Experience intimacy outdoors in nature"
     }
   },
   {
@@ -187,7 +194,8 @@ const sampleFantasies: Fantasy[] = [
     category: "Locations",
     fantasy: {
       male: "Spend a wellness weekend with {partnerName} in a luxurious hotel",
-      female: "Spend a wellness weekend with {partnerName} in a luxurious hotel"
+      female: "Spend a wellness weekend with {partnerName} in a luxurious hotel",
+      result: "Spend a wellness weekend in a luxurious hotel"
     }
   },
   {
@@ -195,7 +203,8 @@ const sampleFantasies: Fantasy[] = [
     category: "Positions",
     fantasy: {
       male: "Try new positions with {partnerName}",
-      female: "Try new positions with {partnerName}"
+      female: "Try new positions with {partnerName}",
+      result: "Explore new intimate positions together"
     }
   },
   {
@@ -203,7 +212,8 @@ const sampleFantasies: Fantasy[] = [
     category: "Accessories",
     fantasy: {
       male: "Use massage oils with {partnerName}",
-      female: "Use massage oils with {partnerName}"
+      female: "Use massage oils with {partnerName}",
+      result: "Use aromatic massage oils to enhance pleasure"
     }
   },
   {
@@ -211,7 +221,8 @@ const sampleFantasies: Fantasy[] = [
     category: "Accessories",
     fantasy: {
       male: "Watch erotic films together with {partnerName}",
-      female: "Watch erotic films together with {partnerName}"
+      female: "Watch erotic films together with {partnerName}",
+      result: "Watch erotic films together for inspiration"
     }
   },
   {
@@ -219,7 +230,8 @@ const sampleFantasies: Fantasy[] = [
     category: "Romantic Fantasies",
     fantasy: {
       male: "Take a dance class with {partnerName}",
-      female: "Take a dance class with {partnerName}"
+      female: "Take a dance class with {partnerName}",
+      result: "Take a dance class to move in harmony"
     }
   },
   {
@@ -227,7 +239,8 @@ const sampleFantasies: Fantasy[] = [
     category: "Sensory Play",
     fantasy: {
       male: "Blindfold {partnerName} and tease with ice cubes",
-      female: "Be blindfolded by {partnerName} and teased with ice cubes"
+      female: "Be blindfolded by {partnerName} and teased with ice cubes",
+      result: "Explore sensations with blindfolds and ice cubes"
     }
   },
   {
@@ -235,7 +248,8 @@ const sampleFantasies: Fantasy[] = [
     category: "Sensory Play",
     fantasy: {
       male: "Use feathers to tease {partnerName}'s body",
-      female: "Have {partnerName} tease your body with feathers"
+      female: "Have {partnerName} tease your body with feathers",
+      result: "Use feathers to tease and tantalize each other"
     }
   },
   {
@@ -243,7 +257,8 @@ const sampleFantasies: Fantasy[] = [
     category: "Outdoor Adventures",
     fantasy: {
       male: "Skinny dipping with {partnerName} at night",
-      female: "Skinny dipping with {partnerName} at night"
+      female: "Skinny dipping with {partnerName} at night",
+      result: "Go skinny dipping together under the night sky"
     }
   },
   {
@@ -251,7 +266,8 @@ const sampleFantasies: Fantasy[] = [
     category: "Outdoor Adventures",
     fantasy: {
       male: "Go hiking to a secluded spot with {partnerName}",
-      female: "Go hiking to a secluded spot with {partnerName}"
+      female: "Go hiking to a secluded spot with {partnerName}",
+      result: "Hike to a secluded spot for intimate privacy"
     }
   },
   {
@@ -259,7 +275,8 @@ const sampleFantasies: Fantasy[] = [
     category: "Spontaneous Encounters",
     fantasy: {
       male: "Surprise {partnerName} with intimacy when least expected",
-      female: "Surprise {partnerName} with intimacy when least expected"
+      female: "Surprise {partnerName} with intimacy when least expected",
+      result: "Surprise each other with spontaneous intimacy"
     }
   },
   {
@@ -267,7 +284,8 @@ const sampleFantasies: Fantasy[] = [
     category: "Spontaneous Encounters",
     fantasy: {
       male: "Send {partnerName} a suggestive message during work hours",
-      female: "Send {partnerName} a suggestive message during work hours"
+      female: "Send {partnerName} a suggestive message during work hours",
+      result: "Exchange suggestive messages during work hours"
     }
   },
   {
@@ -275,7 +293,8 @@ const sampleFantasies: Fantasy[] = [
     category: "Power Dynamics",
     fantasy: {
       male: "Let {partnerName} take complete control in the bedroom",
-      female: "Take complete control in the bedroom with {partnerName}"
+      female: "Take complete control in the bedroom with {partnerName}",
+      result: "Explore power exchange with one partner taking control"
     }
   },
   {
@@ -283,7 +302,8 @@ const sampleFantasies: Fantasy[] = [
     category: "Power Dynamics",
     fantasy: {
       male: "Engage in a dominant/submissive roleplay with {partnerName}",
-      female: "Engage in a dominant/submissive roleplay with {partnerName}"
+      female: "Engage in a dominant/submissive roleplay with {partnerName}",
+      result: "Engage in a dominant/submissive roleplay together"
     }
   },
   {
@@ -291,7 +311,8 @@ const sampleFantasies: Fantasy[] = [
     category: "Erotic Massage",
     fantasy: {
       male: "Give {partnerName} a full body massage with essential oils",
-      female: "Receive a full body massage with essential oils from {partnerName}"
+      female: "Receive a full body massage with essential oils from {partnerName}",
+      result: "Experience a sensual full body massage with essential oils"
     }
   },
   {
@@ -299,7 +320,8 @@ const sampleFantasies: Fantasy[] = [
     category: "Erotic Massage",
     fantasy: {
       male: "Learn professional massage techniques to use on {partnerName}",
-      female: "Have {partnerName} learn professional massage techniques to use on you"
+      female: "Have {partnerName} learn professional massage techniques to use on you",
+      result: "Learn and practice professional massage techniques together"
     }
   }
 ];
