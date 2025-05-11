@@ -48,60 +48,68 @@ export interface UserProfile {
 }
 
 export const categoryData: CategoryData[] = [
-   {
-    "name": "Anal",
-    "colors": {
-      "background": "#f9c74f",
-      "text": "#ffffff",
-      "border": "#f9c74f"
-    }
-  },
-  {
-    "name": "B.D.S.M",
-    "colors": {
-      "background": "#f9c74f",
-      "text": "#ffffff",
-      "border": "#f9c74f"
-    }
-  },
-  {
-    "name": "Group",
-    "colors": {
-      "background": "#f9c74f",
-      "text": "#ffffff",
-      "border": "#f9c74f"
-    }
-  },
-  {
-    "name": "Other Fetishes",
-    "colors": {
-      "background": "#f9c74f",
-      "text": "#ffffff",
-      "border": "#f9c74f"
-    }
-  },
-  {
-    "name": "Public",
-    "colors": {
-      "background": "#f9c74f",
-      "text": "#ffffff",
-      "border": "#f9c74f"
-    }
-  },
-  {
+{
     "name": "The Basics",
     "colors": {
-      "background": "#f9c74f",
+      "background": "#d4074",
       "text": "#ffffff",
-      "border": "#f9c74f"
+      "border": "#d4074"
+    }
+  },
+  {
+    "name": "Sensual & Intimate",
+    "colors": {
+      "background": "#ea7b3c",
+      "text": "#ffffff",
+      "border": "#ea7b3c"
     }
   },
   {
     "name": "Toys",
     "colors": {
-      "background": "#f9c74f",
+      "background": "#84b669",
       "text": "#ffffff",
-      "border": "#f9c74f"
+      "border": "#84b669"
+    }
+  },
+  {
+    "name": "B.D.S.M",
+    "colors": {
+      "background": "#5ab9c5",
+      "text": "#ffffff",
+      "border": "#5ab9c5"
+    }
+  },
+  {
+    "name": "Anal",
+    "colors": {
+      "background": "#4581c5",
+      "text": "#ffffff",
+      "border": "#4581c5"
+    }
+  },
+  {
+    "name": "Public",
+    "colors": {
+      "background": "#8755b7",
+      "text": "#ffffff",
+      "border": "#8755b7"
+    }
+  },
+  {
+    "name": "Group",
+    "colors": {
+      "background": "#d4074",
+      "text": "#ffffff",
+      "border": "#d4074"
+    }
+  },
+  {
+    "name": "Other Fetishes",
+    "colors": {
+      "background": "#ea7b3c",
+      "text": "#ffffff",
+      "border": "#ea7b3c"
     }
   }
 ];
@@ -120,9 +128,9 @@ export const getCategoryColors = (category: FantasyCategory): CategoryColors => 
 };
 
 const sampleFantasies: Fantasy[] = [
-   {
+  {
     "id": 1,
-    "category": "The Basics",
+    "category": "Sensual & Intimate",
     "fantasy": {
       "male": "Enjoy longer teasing and foreplay sessions with {partnerName}",
       "female": "Enjoy longer teasing and foreplay sessions with {partnerName}",
@@ -131,7 +139,7 @@ const sampleFantasies: Fantasy[] = [
   },
   {
     "id": 2,
-    "category": "The Basics",
+    "category": "Sensual & Intimate",
     "fantasy": {
       "male": "Have a steamy phone sex session with {partnerName}",
       "female": "Have a steamy phone sex session with {partnerName}",
@@ -140,7 +148,7 @@ const sampleFantasies: Fantasy[] = [
   },
   {
     "id": 3,
-    "category": "The Basics",
+    "category": "Sensual & Intimate",
     "fantasy": {
       "male": "Have sex with {partnerName} while keeping most of our clothes on",
       "female": "Have sex with {partnerName} while keeping most of our clothes on",
@@ -149,7 +157,7 @@ const sampleFantasies: Fantasy[] = [
   },
   {
     "id": 4,
-    "category": "The Basics",
+    "category": "Sensual & Intimate",
     "fantasy": {
       "male": "Slowly strip {partnerName} completely",
       "female": "Let {partnerName} slowly strip me completely",
@@ -158,7 +166,7 @@ const sampleFantasies: Fantasy[] = [
   },
   {
     "id": 5,
-    "category": "The Basics",
+    "category": "Sensual & Intimate",
     "fantasy": {
       "male": "Let {partnerName} slowly strip me completely",
       "female": "Slowly strip {partnerName} completely",
@@ -167,7 +175,7 @@ const sampleFantasies: Fantasy[] = [
   },
   {
     "id": 6,
-    "category": "The Basics",
+    "category": "Sensual & Intimate",
     "fantasy": {
       "male": "Have {partnerName} give me a sensual massage",
       "female": "Give {partnerName} a sensual massage",
@@ -176,7 +184,7 @@ const sampleFantasies: Fantasy[] = [
   },
   {
     "id": 7,
-    "category": "The Basics",
+    "category": "Sensual & Intimate",
     "fantasy": {
       "male": "Give {partnerName} a sensual massage",
       "female": "Have {partnerName} give me a sensual massage",
@@ -266,7 +274,7 @@ const sampleFantasies: Fantasy[] = [
   },
   {
     "id": 17,
-    "category": "The Basics",
+    "category": "Sensual & Intimate",
     "fantasy": {
       "male": "Nibble {partnerName}'s earlobes",
       "female": "Have {partnerName} nibble my earlobes",
@@ -275,7 +283,7 @@ const sampleFantasies: Fantasy[] = [
   },
   {
     "id": 18,
-    "category": "The Basics",
+    "category": "Sensual & Intimate",
     "fantasy": {
       "male": "Have {partnerName} nibble my earlobes",
       "female": "Nibble {partnerName}'s earlobes",
@@ -383,7 +391,7 @@ const sampleFantasies: Fantasy[] = [
   },
   {
     "id": 30,
-    "category": "The Basics",
+    "category": "Sensual & Intimate",
     "fantasy": {
       "male": "Listen to romantic music while having sex with {partnerName}",
       "female": "Listen to romantic music while having sex with {partnerName}",
@@ -401,7 +409,7 @@ const sampleFantasies: Fantasy[] = [
   },
   {
     "id": 32,
-    "category": "The Basics",
+    "category": "Sensual & Intimate",
     "fantasy": {
       "male": "Mutually masturbate with {partnerName}",
       "female": "Mutually masturbate with {partnerName}",
@@ -410,7 +418,7 @@ const sampleFantasies: Fantasy[] = [
   },
   {
     "id": 33,
-    "category": "The Basics",
+    "category": "Sensual & Intimate",
     "fantasy": {
       "male": "Slide my penis between {partnerName}'s breasts and feel her warmth around me",
       "female": "Let {partnerName} slide his penis between my breasts and feel my warmth around him",
