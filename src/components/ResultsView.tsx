@@ -72,9 +72,6 @@ const ResultsView = ({
               <h3 className="text-xl font-semibold mb-4">{category}</h3>
               
               {fantasies.map(fantasy => {
-                // Use the new result text instead of gender-specific text
-                const fantasyText = fantasy.fantasy.result;
-                
                 const colors = getCategoryColors(fantasy.category);
                 
                 return (
@@ -86,15 +83,15 @@ const ResultsView = ({
                       color: "#ffffff",
                     }}
                   >
-                    <CardHeader>
+                    <CardContent className="pt-6 pb-2">
+                      <p className="text-lg text-white text-center mb-4">{fantasy.fantasy.result}</p>
+                    </CardContent>
+                    <CardHeader className="pt-0">
                       <CardDescription className="text-white flex justify-between items-center">
                         <span>You: {getUserAnswer(fantasy.id)}</span>
                         <span>{partnerName}: {getPartnerAnswer(fantasy.id)}</span>
                       </CardDescription>
                     </CardHeader>
-                    <CardContent>
-                      <p className="text-lg text-white text-center">{fantasyText}</p>
-                    </CardContent>
                   </Card>
                 );
               })}

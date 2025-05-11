@@ -1,18 +1,26 @@
 
 import React from "react";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Fantasy, AnswerType, getCategoryColors } from "@/data/sampleFantasies";
+import { Fantasy, AnswerType, CategoryColors } from "@/data/sampleFantasies";
 import { getUserProfile } from "@/utils/storage";
+import { cn } from "@/lib/utils";
 
 interface FantasyCardProps {
   fantasy: Fantasy;
   currentAnswer: AnswerType;
   onAnswer: (answer: AnswerType) => void;
   isAnswered: boolean;
+  categoryColors: CategoryColors;
 }
 
-const FantasyCard = ({ fantasy, currentAnswer, onAnswer, isAnswered }: FantasyCardProps) => {
+const FantasyCard = ({ 
+  fantasy, 
+  currentAnswer, 
+  onAnswer, 
+  isAnswered,
+  categoryColors
+}: FantasyCardProps) => {
   const profile = getUserProfile();
   
   if (!profile) {
@@ -21,55 +29,55 @@ const FantasyCard = ({ fantasy, currentAnswer, onAnswer, isAnswered }: FantasyCa
   
   const gender = profile.gender;
   const partnerName = profile.partnerName;
-  const colors = getCategoryColors(fantasy.category);
   
   const fantasyText = gender === "male" 
     ? fantasy.fantasy.male.replace("{partnerName}", partnerName)
     : fantasy.fantasy.female.replace("{partnerName}", partnerName);
 
+  // Create button styles based on category colors
+  const buttonBaseStyle = {
+    backgroundColor: categoryColors.background,
+    color: 'white',
+    border: 'none',
+    filter: 'brightness(0.8)',
+  };
+  
+  const buttonActiveStyle = {
+    backgroundColor: categoryColors.background,
+    filter: 'brightness(0.6)',
+  };
+
   return (
     <Card 
       className={`w-full mb-6 ${isAnswered ? 'opacity-90' : 'opacity-100'} transition-opacity shadow-md border-0`}
       style={{
-        backgroundColor: colors.background,
+        backgroundColor: categoryColors.background,
         color: "#ffffff",
         perspective: '1000px'
       }}
     >
-      <CardHeader>
-        <CardTitle className="text-center text-xl text-white">{fantasy.category}</CardTitle>
-      </CardHeader>
       <CardContent className="py-6">
         <p className="text-lg text-center mb-8 text-white">{fantasyText}</p>
       </CardContent>
       <CardFooter className="flex flex-col space-y-2">
         <div className="grid grid-cols-3 gap-2 w-full">
           <Button 
-            className={`fantasy-button-interested ${
-              currentAnswer === "interested" 
-                ? "" 
-                : "opacity-50 hover:opacity-80"
-            }`}
+            className="text-white"
+            style={currentAnswer === "interested" ? buttonActiveStyle : buttonBaseStyle}
             onClick={() => onAnswer("interested")}
           >
             Yes
           </Button>
           <Button 
-            className={`fantasy-button-conditionally ${
-              currentAnswer === "conditionally" 
-                ? "" 
-                : "opacity-50 hover:opacity-80"
-            }`}
+            className="text-white"
+            style={currentAnswer === "conditionally" ? buttonActiveStyle : buttonBaseStyle}
             onClick={() => onAnswer("conditionally")}
           >
             Maybe
           </Button>
           <Button 
-            className={`fantasy-button-not-interested ${
-              currentAnswer === "notInterested" 
-                ? "" 
-                : "opacity-50 hover:opacity-80"
-            }`}
+            className="text-white"
+            style={currentAnswer === "notInterested" ? buttonActiveStyle : buttonBaseStyle}
             onClick={() => onAnswer("notInterested")}
           >
             No
