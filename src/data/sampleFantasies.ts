@@ -51,9 +51,9 @@ export const categoryData: CategoryData[] = [
 {
     "name": "The Basics",
     "colors": {
-      "background": "#d4074",
+      "background": "#d40774",
       "text": "#ffffff",
-      "border": "#d4074"
+      "border": "#d40774"
     }
   },
   {
