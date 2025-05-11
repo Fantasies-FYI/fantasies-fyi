@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Fantasy, UserAnswer } from "@/data/sampleFantasies";
+import { Fantasy, UserAnswer, getCategoryColors } from "@/data/sampleFantasies";
 import { getUserProfile } from "@/utils/storage";
 import { Badge } from "@/components/ui/badge";
 
@@ -38,6 +38,15 @@ const ResultsView = ({
     return "Unknown";
   };
 
+  // Group fantasies by category
+  const groupedFantasies: { [key: string]: Fantasy[] } = {};
+  sharedFantasies.forEach(fantasy => {
+    if (!groupedFantasies[fantasy.category]) {
+      groupedFantasies[fantasy.category] = [];
+    }
+    groupedFantasies[fantasy.category].push(fantasy);
+  });
+
   return (
     <div className="w-full max-w-2xl mx-auto">
       <h2 className="text-2xl font-bold text-center mb-6">
@@ -45,7 +54,7 @@ const ResultsView = ({
       </h2>
       
       {sharedFantasies.length === 0 ? (
-        <Card className="mb-4">
+        <Card className="mb-4 border-0 shadow-md">
           <CardContent className="pt-6">
             <p className="text-center">
               No shared interests found. Try answering more fantasies!
@@ -55,35 +64,44 @@ const ResultsView = ({
       ) : (
         <>
           <p className="text-center mb-6">
-            You have selected these {sharedFantasies.length} fantasies in common:
+            You have {sharedFantasies.length} shared fantasies across {Object.keys(groupedFantasies).length} categories:
           </p>
           
-          {sharedFantasies.map(fantasy => {
-            const gender = profile.gender;
-            const fantasyText = gender === "male" 
-              ? fantasy.fantasy.male.replace("{partnerName}", partnerName)
-              : fantasy.fantasy.female.replace("{partnerName}", partnerName);
+          {Object.entries(groupedFantasies).map(([category, fantasies]) => (
+            <div key={category} className="mb-8">
+              <h3 className="text-xl font-semibold mb-4">{category}</h3>
               
-            return (
-              <Card key={fantasy.id} className="mb-4">
-                <CardHeader>
-                  <CardTitle className="flex justify-between items-center">
-                    <span className="text-lg">{fantasy.category}</span>
-                    <Badge>{fantasy.id}</Badge>
-                  </CardTitle>
-                  <CardDescription>
-                    <div className="flex justify-between">
-                      <span>You: {getUserAnswer(fantasy.id)}</span>
-                      <span>{partnerName}: {getPartnerAnswer(fantasy.id)}</span>
-                    </div>
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-lg">{fantasyText}</p>
-                </CardContent>
-              </Card>
-            );
-          })}
+              {fantasies.map(fantasy => {
+                const gender = profile.gender;
+                const fantasyText = gender === "male" 
+                  ? fantasy.fantasy.male.replace("{partnerName}", partnerName)
+                  : fantasy.fantasy.female.replace("{partnerName}", partnerName);
+                
+                const colors = getCategoryColors(fantasy.category);
+                
+                return (
+                  <Card 
+                    key={fantasy.id} 
+                    className="mb-4 border-0 shadow-md"
+                    style={{
+                      backgroundColor: colors.background,
+                      color: "#ffffff",
+                    }}
+                  >
+                    <CardHeader>
+                      <CardDescription className="text-white flex justify-between items-center">
+                        <span>You: {getUserAnswer(fantasy.id)}</span>
+                        <span>{partnerName}: {getPartnerAnswer(fantasy.id)}</span>
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-lg text-white text-center">{fantasyText}</p>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+          ))}
         </>
       )}
     </div>
