@@ -17,14 +17,6 @@ const CategoryGrid = ({
   onSelectCategory,
   categoryProgress
 }: CategoryGridProps) => {
-  // Calculate if all questions are answered
-  const allQuestionsAnswered = categories.every(
-    category => {
-      const progress = categoryProgress[category];
-      return progress && progress.answered === progress.total;
-    }
-  );
-
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full max-w-4xl mx-auto">
       {categories.map((category) => {
@@ -46,7 +38,7 @@ const CategoryGrid = ({
             <AspectRatio ratio={1 / 1}>
               <div className="absolute inset-0 p-4 flex flex-col">
                 <CardHeader className="p-0 pb-2 flex-shrink-0">
-                  <CardTitle className="text-xl flex items-center text-white">
+                  <CardTitle className="text-xl flex items-center text-white text-center w-full">
                     <span>{category}</span>
                     {isComplete && (
                       <Check className="w-5 h-5 ml-2 text-white" />
@@ -54,7 +46,7 @@ const CategoryGrid = ({
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-0 flex-1 flex flex-col justify-between">
-                  <div className="text-sm text-white">
+                  <div className="text-sm text-white text-center w-full">
                     <span>{progress?.answered || 0} / {progress?.total || 0}</span>
                   </div>
                   
@@ -69,14 +61,6 @@ const CategoryGrid = ({
           </Card>
         );
       })}
-      
-      {allQuestionsAnswered && (
-        <div className="col-span-full mt-4 text-center">
-          <p className="text-green-600 font-medium">
-            Du hast alle Fragen beantwortet! Du kannst nun deine Ergebnisse teilen.
-          </p>
-        </div>
-      )}
     </div>
   );
 };
