@@ -48,22 +48,22 @@ const ResultsView = ({
   });
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
-      <h2 className="text-2xl font-bold text-center mb-6">
+    <div className="w-full max-w-2xl mx-auto text-left">
+      <h2 className="text-2xl font-bold mb-6">
         Your Shared Interests
       </h2>
       
       {sharedFantasies.length === 0 ? (
         <Card className="mb-4 border-0 shadow-md">
           <CardContent className="pt-6">
-            <p className="text-center">
+            <p>
               No shared interests found. Try answering more fantasies!
             </p>
           </CardContent>
         </Card>
       ) : (
         <>
-          <p className="text-center mb-6">
+          <p className="mb-6">
             You have {sharedFantasies.length} shared fantasies across {Object.keys(groupedFantasies).length} categories:
           </p>
           

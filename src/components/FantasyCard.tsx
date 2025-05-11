@@ -37,13 +37,14 @@ const FantasyCard = ({
   // Create button styles based on category colors
   const buttonBaseStyle = {
     backgroundColor: categoryColors.background,
-    color: 'white',
+    color: '#FFFFFF',
     border: 'none',
     filter: 'brightness(0.8)',
   };
   
   const buttonActiveStyle = {
     backgroundColor: categoryColors.background,
+    color: '#FFFFFF',
     filter: 'brightness(0.6)',
   };
 
@@ -52,7 +53,7 @@ const FantasyCard = ({
       className={`w-full mb-6 ${isAnswered ? 'opacity-90' : 'opacity-100'} transition-opacity shadow-md border-0`}
       style={{
         backgroundColor: categoryColors.background,
-        color: "#ffffff",
+        color: "#FFFFFF",
         perspective: '1000px'
       }}
     >

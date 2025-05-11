@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -56,8 +57,8 @@ const OnboardingForm = ({
     }
   };
   
-  const renderStep1 = () => <CardContent className="space-y-4">
-      <div className="text-center mb-6">
+  const renderStep1 = () => <CardContent className="space-y-4 text-left">
+      <div className="mb-6">
         <h3 className="text-xl font-semibold mb-2">Welcome to Fantasy Shared Hearts</h3>
         <p className="text-muted-foreground">Explore your hidden pleasures</p>
       </div>
@@ -81,8 +82,8 @@ const OnboardingForm = ({
       </p>
     </CardContent>;
   
-  const renderStep2 = () => <CardContent className="space-y-4">
-      <div className="text-center space-y-4">
+  const renderStep2 = () => <CardContent className="space-y-4 text-left">
+      <div className="space-y-4">
         <h3 className="text-lg font-medium">How Fantasy Shared Hearts Works</h3>
         <p className="mb-2">
           This app helps you discover sexual fantasies that both you and your partner are interested in.
@@ -90,8 +91,8 @@ const OnboardingForm = ({
         </p>
         
         <div className="bg-gray-800 p-4 rounded-lg mt-4 text-white border-0">
-          <h4 className="font-medium mb-2 text-center">The Process</h4>
-          <ol className="text-sm space-y-2 text-left list-decimal pl-4">
+          <h4 className="font-medium mb-2">The Process</h4>
+          <ol className="text-sm space-y-2 list-decimal pl-4">
             <li>Browse through different fantasy categories</li>
             <li>Answer questions about each fantasy</li>
             <li>Generate a unique code to share with your partner</li>
@@ -100,15 +101,15 @@ const OnboardingForm = ({
         </div>
       </div>
       
-      <div className="text-center space-y-4 mt-6">
+      <div className="space-y-4 mt-6">
         <h3 className="text-lg font-medium">Understanding Answer Options</h3>
         <p>
           For each fantasy, you'll have three possible responses. Be honest with your answers!
         </p>
         
         <div className="bg-gray-800 p-4 rounded-lg mt-4 text-white border-0">
-          <h4 className="font-medium mb-3 text-center">Answer Options</h4>
-          <div className="text-sm space-y-3 text-left">
+          <h4 className="font-medium mb-3">Answer Options</h4>
+          <div className="text-sm space-y-3">
             <p className="mb-2">
               <span className="font-bold">Yes:</span> This sounds fun! You're enthusiastic about this fantasy.
             </p>
@@ -133,7 +134,7 @@ const OnboardingForm = ({
       </div>
     </CardContent>;
   
-  const renderStep3 = () => <CardContent className="space-y-4">
+  const renderStep3 = () => <CardContent className="space-y-4 text-left">
       <div className="space-y-2">
         <Label htmlFor="name">Your Name</Label>
         <Input id="name" placeholder="Enter name" value={profile.name} onChange={e => setProfile({
@@ -205,8 +206,8 @@ const OnboardingForm = ({
       </div>
     </CardContent>;
   
-  const renderStep4 = () => <CardContent className="space-y-4">
-      <div className="text-center space-y-4">
+  const renderStep4 = () => <CardContent className="space-y-4 text-left">
+      <div className="space-y-4">
         <h3 className="text-lg font-medium">Privacy & Security</h3>
         <p className="mb-4">
           Fantasy Shared Hearts stores all your data locally on your device. No data is sent to servers.
@@ -228,7 +229,7 @@ const OnboardingForm = ({
     </CardContent>;
   
   return <Card className="w-full max-w-md mx-auto border-0 shadow-md">
-      <CardHeader>
+      <CardHeader className="text-left">
         <CardTitle>Welcome</CardTitle>
         <CardDescription>
           Step {step} of 4: {step === 1 ? "Welcome & Introduction" : step === 2 ? "How It Works & Answer Options" : step === 3 ? "Personal Information" : "Privacy & Final Notes"}
