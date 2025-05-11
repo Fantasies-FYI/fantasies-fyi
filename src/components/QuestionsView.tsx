@@ -3,7 +3,7 @@ import React from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import FloatingMenu from "@/components/FloatingMenu";
 import FantasyCard from "@/components/FantasyCard";
-import { Fantasy, AnswerType, getCategoryColors } from "@/data/sampleFantasies";
+import { Fantasy, AnswerType, getCategoryColors, FantasyCategory } from "@/data/sampleFantasies";
 import { getUserAnswerForFantasy } from "@/utils/storage";
 
 interface QuestionsViewProps {
@@ -24,7 +24,7 @@ const QuestionsView = ({
   onShareClick
 }: QuestionsViewProps) => {
   // Get the category from the first fantasy (they should all be the same category)
-  const categoryName = fantasies.length > 0 ? fantasies[0].category : "";
+  const categoryName = fantasies.length > 0 ? fantasies[0].category : "Romantic Fantasies" as FantasyCategory;
   const categoryColors = getCategoryColors(categoryName);
   
   return (
