@@ -1,5 +1,13 @@
 
 export type FantasyCategory = 
+  | "The Basics"
+  | "Sensual & Intimate"
+  | "Toys"
+  | "B.D.S.M"
+  | "Anal"
+  | "Public"
+  | "Group"
+  | "Other Fetishes"
   | "Romantic Fantasies"
   | "Role Play"
   | "Locations"
