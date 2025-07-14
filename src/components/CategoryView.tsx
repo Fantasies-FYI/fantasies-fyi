@@ -40,21 +40,23 @@ const CategoryView = ({
 
   return (
     <div className="p-4">
-      <h2 className="text-xl font-bold text-left mb-2">
-        Choose a Category
-      </h2>
+      <div className="w-full max-w-4xl mx-auto">
+        <h2 className="text-xl font-bold text-left mb-2">
+          Choose a Category
+        </h2>
+        
+        {allQuestionsAnswered ? (
+          <p className="text-left mb-6 text-green-600">
+            Du hast alle Fragen beantwortet! Du kannst nun deine Ergebnisse teilen.
+          </p>
+        ) : (
+          <p className="text-left mb-6 text-gray-600">
+            Please answer all questions to see the results.
+          </p>
+        )}
+      </div>
       
-      {allQuestionsAnswered ? (
-        <p className="text-left mb-6 text-green-600">
-          Du hast alle Fragen beantwortet! Du kannst nun deine Ergebnisse teilen.
-        </p>
-      ) : (
-        <p className="text-left mb-6 text-gray-600">
-          Please answer all questions to see the results.
-        </p>
-      )}
-      
-      <CategoryGrid 
+      <CategoryGrid
         categories={sortedCategories}
         activeCategory={activeCategory}
         onSelectCategory={onSelectCategory}
