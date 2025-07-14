@@ -25,7 +25,7 @@ const InfoPage = ({ onClose, onReset }: InfoPageProps) => {
 
   return (
     <div className="w-full max-w-2xl mx-auto pb-20">
-      <Card className="mb-6">
+      <Card className="mb-6 border-0 shadow-md">
         <CardHeader>
           <CardTitle className="text-2xl">About Fantasy Shared Hearts</CardTitle>
         </CardHeader>
@@ -66,7 +66,7 @@ const InfoPage = ({ onClose, onReset }: InfoPageProps) => {
         </CardContent>
       </Card>
       
-      <Card className="mb-6">
+      <Card className="mb-6 border-0 shadow-md">
         <CardHeader>
           <CardTitle className="text-xl">Privacy & Purpose</CardTitle>
         </CardHeader>
@@ -94,7 +94,7 @@ const InfoPage = ({ onClose, onReset }: InfoPageProps) => {
         </CardContent>
       </Card>
       
-      <Card className="mb-6">
+      <Card className="mb-6 border-0 shadow-md">
         <CardHeader>
           <CardTitle className="text-xl text-red-500">Reset All Answers</CardTitle>
         </CardHeader>
@@ -118,7 +118,7 @@ const InfoPage = ({ onClose, onReset }: InfoPageProps) => {
                   </DialogDescription>
                 </DialogHeader>
                 <div className="flex justify-end space-x-2 mt-4">
-                  <Button variant="outline" onClick={() => setResetDialogOpen(false)}>
+                  <Button variant="secondary" onClick={() => setResetDialogOpen(false)}>
                     Cancel
                   </Button>
                   <Button variant="destructive" onClick={handleReset}>

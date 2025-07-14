@@ -51,7 +51,7 @@ const PartnerCodeInput = ({ onCodeProcessed, onCancel }: PartnerCodeInputProps) 
         />
       </div>
       <div className="flex justify-center">
-        <Button onClick={processCode} disabled={isProcessing}>
+        <Button variant="secondary" onClick={processCode} disabled={isProcessing}>
           {isProcessing ? "Processing..." : "Process Code"}
         </Button>
       </div>

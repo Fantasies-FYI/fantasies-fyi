@@ -51,7 +51,7 @@ const SharingCode = ({ onClose }: SharingCodeProps) => {
         </div>
       </CardContent>
       <div className="flex justify-center mt-6">
-        <Button onClick={copyToClipboard}>
+        <Button variant="secondary" onClick={copyToClipboard}>
           Copy Code
         </Button>
       </div>

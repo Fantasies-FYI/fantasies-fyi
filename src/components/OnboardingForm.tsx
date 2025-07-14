@@ -243,13 +243,13 @@ const OnboardingForm = ({
       
       <CardFooter className="flex justify-between">
         {step > 1 ? (
-          <Button variant="outline" onClick={handlePrevious}>
+          <Button variant="secondary" onClick={handlePrevious}>
             Back
           </Button>
         ) : (
           <div>{/* Empty div to maintain the spacing */}</div>
         )}
-        <Button onClick={handleNext}>
+        <Button variant="secondary" onClick={handleNext}>
           {step < 4 ? "Next" : "Start"}
         </Button>
       </CardFooter>

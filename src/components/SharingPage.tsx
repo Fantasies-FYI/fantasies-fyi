@@ -38,14 +38,14 @@ const SharingPage = ({
   if (!allQuestionsAnswered) {
     return (
       <div className="w-full max-w-md mx-auto">
-        <Card>
+        <Card className="border-0 shadow-md">
           <CardHeader>
             <CardTitle className="text-center">Share Your Fantasies</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-center py-6">
               <p className="mb-4">You need to answer all questions before you can share or view results.</p>
-              <Button onClick={onClose}>Back to Overview</Button>
+              <Button variant="secondary" onClick={onClose}>Back to Overview</Button>
             </div>
           </CardContent>
         </Card>
@@ -63,7 +63,7 @@ const SharingPage = ({
   if (!hasConfirmed) {
     return (
       <div className="w-full max-w-md mx-auto">
-        <Card>
+        <Card className="border-0 shadow-md">
           <CardHeader>
             <CardTitle className="text-center">Share Your Fantasies</CardTitle>
           </CardHeader>
@@ -71,8 +71,8 @@ const SharingPage = ({
             <div className="text-center py-6">
               <p className="mb-4">Important: After sharing, you can no longer change your answers. This ensures that your results remain consistent with your partner.</p>
               <div className="flex justify-center space-x-3">
-                <Button variant="outline" onClick={onClose}>Cancel</Button>
-                <Button onClick={handleConfirm}>Confirm & Continue</Button>
+                <Button variant="secondary" onClick={onClose}>Cancel</Button>
+                <Button variant="secondary" onClick={handleConfirm}>Confirm & Continue</Button>
               </div>
             </div>
           </CardContent>
@@ -89,7 +89,7 @@ const SharingPage = ({
   
   return (
     <div className="w-full max-w-md mx-auto pb-16">
-      <Card>
+      <Card className="border-0 shadow-md">
         <CardHeader>
           <CardTitle className="text-center">Share Your Fantasies</CardTitle>
         </CardHeader>
