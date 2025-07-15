@@ -25,9 +25,11 @@ const CategoryIcon = ({ category, className = "w-10 h-10" }: CategoryIconProps) 
       
       case "Toys":
         return (
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className}>
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
-          </svg>
+          <img 
+            src="/lovable-uploads/f107b550-3f5d-4d3d-8f8a-2fed313e3053.png" 
+            alt="Toys icon" 
+            className={className}
+          />
         );
       
       case "B.D.S.M":
