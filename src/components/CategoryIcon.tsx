@@ -11,9 +11,11 @@ const CategoryIcon = ({ category, className = "w-10 h-10" }: CategoryIconProps) 
     switch (category) {
       case "The Basics":
         return (
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className}>
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-          </svg>
+          <img 
+            src="/lovable-uploads/96ac3d73-a025-46da-aa63-32b6d3556534.png" 
+            alt="The Basics icon" 
+            className={className}
+          />
         );
       
       case "Sensual & Intimate":
@@ -34,20 +36,20 @@ const CategoryIcon = ({ category, className = "w-10 h-10" }: CategoryIconProps) 
       
       case "B.D.S.M":
         return (
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className}>
-            <path d="M8 2v2h2V2h4v2h2V2c1.1 0 2 .9 2 2v16c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2z"/>
-            <circle cx="9" cy="12" r="2"/>
-            <circle cx="15" cy="12" r="2"/>
-            <path d="M6 8h12M6 16h12"/>
-          </svg>
+          <img 
+            src="/lovable-uploads/fc011aec-f428-4f6d-8868-7e0c04b21a2f.png" 
+            alt="B.D.S.M icon" 
+            className={className}
+          />
         );
       
       case "Anal":
         return (
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className}>
-            <circle cx="12" cy="12" r="3"/>
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1.06 1.56V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.35a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.56-1.06H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.65 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1.06-1.56V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1.06 1.56 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.56 1.06H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.56 1.06z"/>
-          </svg>
+          <img 
+            src="/lovable-uploads/b74b6206-b41e-417f-840e-a677c238f01b.png" 
+            alt="Anal icon" 
+            className={className}
+          />
         );
       
       case "Public":
