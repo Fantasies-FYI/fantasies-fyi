@@ -26,7 +26,7 @@ const CategoryIcon = ({ category, className = "w-10 h-10" }: CategoryIconProps) 
       case "Toys":
         return (
           <img 
-            src="/lovable-uploads/f107b550-3f5d-4d3d-8f8a-2fed313e3053.png" 
+            src="/lovable-uploads/f47342a7-ebde-4544-817e-3840acded6fa.png" 
             alt="Toys icon" 
             className={className}
           />
