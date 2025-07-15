@@ -20,9 +20,11 @@ const CategoryIcon = ({ category, className = "w-10 h-10" }: CategoryIconProps) 
       
       case "Sensual & Intimate":
         return (
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className}>
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-          </svg>
+          <img 
+            src="/lovable-uploads/96a181b5-5afb-4454-9841-bb3a25f43c96.png" 
+            alt="Sensual & Intimate icon" 
+            className={className}
+          />
         );
       
       case "Toys":
@@ -54,30 +56,29 @@ const CategoryIcon = ({ category, className = "w-10 h-10" }: CategoryIconProps) 
       
       case "Public":
         return (
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className}>
-            <path d="M4 6h16v2H4zm0 5h16v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6z"/>
-            <path d="M4 11V9a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2"/>
-            <circle cx="15" cy="18" r="1"/>
-          </svg>
+          <img 
+            src="/lovable-uploads/e5c48826-cf76-4c57-b422-41be4ee9b3ad.png" 
+            alt="Public icon" 
+            className={className}
+          />
         );
       
       case "Group":
         return (
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className}>
-            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-            <circle cx="9" cy="7" r="4"/>
-            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-          </svg>
+          <img 
+            src="/lovable-uploads/b309b83e-b330-4939-adb7-4802dc643675.png" 
+            alt="Group icon" 
+            className={className}
+          />
         );
       
       case "Other Fetishes":
         return (
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className}>
-            <circle cx="12" cy="12" r="8"/>
-            <path d="M12 8v8"/>
-            <path d="M8 12h8"/>
-          </svg>
+          <img 
+            src="/lovable-uploads/a67ab253-e7d6-4354-a66f-6933304d7ea8.png" 
+            alt="Other Fetishes icon" 
+            className={className}
+          />
         );
       
       case "Romantic Fantasies":
