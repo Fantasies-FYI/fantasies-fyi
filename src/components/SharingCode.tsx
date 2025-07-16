@@ -12,7 +12,6 @@ interface SharingCodeProps {
 
 const SharingCode = ({ onClose }: SharingCodeProps) => {
   const [code, setCode] = useState("");
-  const [shareUrl, setShareUrl] = useState("");
   
   useEffect(() => {
     // Generate the code when component mounts
@@ -23,10 +22,13 @@ const SharingCode = ({ onClose }: SharingCodeProps) => {
     const profile = getUserProfile();
     const userName = profile?.name || "User";
     
-    // Create shareable URL with name parameter
-    const baseUrl = window.location.origin;
-    const urlWithParams = `${baseUrl}?name=${encodeURIComponent(userName)}&code=${encodeURIComponent(generatedCode)}`;
-    setShareUrl(urlWithParams);
+    // Update the browser URL with name and code parameters
+    const currentUrl = new URL(window.location.href);
+    currentUrl.searchParams.set('name', userName);
+    currentUrl.searchParams.set('code', generatedCode);
+    
+    // Update browser URL without reloading the page
+    window.history.replaceState({}, '', currentUrl.toString());
   }, []);
 
   const copyCodeToClipboard = () => {
@@ -36,16 +38,6 @@ const SharingCode = ({ onClose }: SharingCodeProps) => {
       })
       .catch(() => {
         toast.error("Error copying code");
-      });
-  };
-
-  const copyUrlToClipboard = () => {
-    navigator.clipboard.writeText(shareUrl)
-      .then(() => {
-        toast.success("Share URL copied to clipboard!");
-      })
-      .catch(() => {
-        toast.error("Error copying URL");
       });
   };
 
@@ -72,16 +64,6 @@ const SharingCode = ({ onClose }: SharingCodeProps) => {
           />
         </div>
         
-        {/* Share URL */}
-        <div className="mb-4">
-          <label className="text-sm font-medium text-muted-foreground">Share URL:</label>
-          <Input
-            value={shareUrl}
-            readOnly
-            className="font-mono text-xs mt-1"
-          />
-        </div>
-        
         <div className="text-sm">
           <p>
             Your partner needs this code to see your shared fantasies. 
@@ -89,17 +71,14 @@ const SharingCode = ({ onClose }: SharingCodeProps) => {
           </p>
           <ul className="list-disc list-inside mt-2 space-y-1">
             <li>Copy the code and send it in a message</li>
-            <li>Copy the full URL with your name included</li>
+            <li>Share the current page URL (contains your name and code)</li>
             <li>Show this code directly to your partner</li>
           </ul>
         </div>
       </CardContent>
-      <div className="flex justify-center space-x-3 mt-6">
+      <div className="flex justify-center mt-6">
         <Button variant="secondary" onClick={copyCodeToClipboard}>
           Copy Code
-        </Button>
-        <Button variant="secondary" onClick={copyUrlToClipboard}>
-          Copy URL
         </Button>
       </div>
     </div>
