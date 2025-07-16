@@ -48,12 +48,6 @@ const SharingCode = ({ onClose }: SharingCodeProps) => {
           This is your unique code that you can share with your partner.
         </p>
         
-        {/* User Name Display */}
-        <div className="mb-4">
-          <label className="text-sm font-medium text-muted-foreground">Your Name:</label>
-          <p className="text-lg font-semibold">{getUserProfile()?.name || "User"}</p>
-        </div>
-        
         {/* Share Code */}
         <div className="mb-4">
           <label className="text-sm font-medium text-muted-foreground">Share Code:</label>
@@ -66,14 +60,8 @@ const SharingCode = ({ onClose }: SharingCodeProps) => {
         
         <div className="text-sm">
           <p>
-            Your partner needs this code to see your shared fantasies. 
-            Ways to share:
+            Your partner needs this code to see your shared fantasies. Copy the code and send it in a message.
           </p>
-          <ul className="list-disc list-inside mt-2 space-y-1">
-            <li>Copy the code and send it in a message</li>
-            <li>Share the current page URL (contains your name and code)</li>
-            <li>Show this code directly to your partner</li>
-          </ul>
         </div>
       </CardContent>
       <div className="flex justify-center mt-6">
