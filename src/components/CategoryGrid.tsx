@@ -51,7 +51,7 @@ const CategoryGrid = ({
                     <span>{progress?.answered || 0} / {progress?.total || 0}</span>
                   </div>
                   
-                  <div className="absolute bottom-2 right-2 opacity-20">
+                  <div className="absolute bottom-2 right-2">
                     <CategoryIcon category={category} className="w-16 h-16 text-white" />
                   </div>
                 </CardContent>
