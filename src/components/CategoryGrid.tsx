@@ -52,7 +52,7 @@ const CategoryGrid = ({
                   </div>
                   
                   <div className="absolute bottom-2 right-2 opacity-20">
-                    <CategoryIcon category={category} className="w-10 h-10 text-white" />
+                    <CategoryIcon category={category} className="w-16 h-16 text-white" />
                   </div>
                 </CardContent>
               </div>
