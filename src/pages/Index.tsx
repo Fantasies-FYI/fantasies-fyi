@@ -32,7 +32,7 @@ const Index = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Loading Fantasy Shared Hearts...</h1>
+          <h1 className="text-2xl font-bold mb-4">Loading Fantasies FYI...</h1>
         </div>
       </div>
     );

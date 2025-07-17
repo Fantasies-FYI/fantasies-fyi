@@ -27,7 +27,7 @@ const InfoPage = ({ onClose, onReset }: InfoPageProps) => {
     <div className="w-full max-w-2xl mx-auto pb-20">
       <Card className="mb-6 border-0 shadow-md">
         <CardHeader>
-          <CardTitle className="text-2xl">About Fantasy Shared Hearts</CardTitle>
+          <CardTitle className="text-2xl">About Fantasies FYI</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <p className="italic text-lg text-center mb-4">
@@ -40,9 +40,9 @@ const InfoPage = ({ onClose, onReset }: InfoPageProps) => {
             and find mutual fantasies.
           </p>
           
-          <h3 className="text-lg font-semibold">What is Fantasy Shared Hearts?</h3>
+          <h3 className="text-lg font-semibold">What is Fantasies FYI?</h3>
           <p>
-            Fantasy Shared Hearts is an interactive quiz application designed to help couples 
+            Fantasies FYI is an interactive quiz application designed to help couples 
             explore and discuss their sexual preferences and boundaries in a safe, comfortable environment. 
             By answering questions about various sexual activities and fantasies, couples can gain 
             insights into each other's desires and foster open communication about intimacy.
@@ -73,7 +73,7 @@ const InfoPage = ({ onClose, onReset }: InfoPageProps) => {
         <CardContent className="space-y-4">
           <h3 className="text-lg font-semibold">Privacy and Security</h3>
           <p>
-            Fantasy Shared Hearts stores all your data locally on your device. No data is sent to servers.
+            Fantasies FYI stores all your data locally on your device. No data is sent to servers.
             The shared code is encrypted to protect your privacy. Your personal information is not sold, 
             traded, or otherwise transferred to outside parties.
           </p>
@@ -87,7 +87,7 @@ const InfoPage = ({ onClose, onReset }: InfoPageProps) => {
           
           <h3 className="text-lg font-semibold">Important Notice</h3>
           <p>
-            Fantasy Shared Hearts is intended for consenting adults only. The app is designed 
+            Fantasies FYI is intended for consenting adults only. The app is designed 
             to facilitate communication and should not be used as a substitute for professional 
             advice or counseling. Always practice safe, consensual, and legal sexual activities.
           </p>
