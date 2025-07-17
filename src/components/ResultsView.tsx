@@ -49,7 +49,7 @@ const ResultsView = ({
 
   return (
     <div className="w-full max-w-2xl mx-auto text-left">
-      <h2 className="text-2xl font-bold mb-6">
+      <h2 className="text-2xl font-bold mb-6 mt-4">
         Your Shared Interests
       </h2>
       

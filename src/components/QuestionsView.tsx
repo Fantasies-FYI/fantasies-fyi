@@ -32,7 +32,7 @@ const QuestionsView = ({
       <ScrollArea className="h-[calc(100vh-16px)]">
         <div className="w-full max-w-md mx-auto p-4 pb-28">
           <h2 
-            className="text-xl font-bold text-center mb-6"
+            className="text-xl font-bold text-center mb-6 mt-4"
             style={{ color: categoryColors.text }}
           >
             {categoryName}

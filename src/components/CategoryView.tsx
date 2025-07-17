@@ -41,7 +41,7 @@ const CategoryView = ({
   return (
     <div className="p-4">
       <div className="w-full max-w-4xl mx-auto">
-        <h2 className="text-xl font-bold text-left mb-2">
+        <h2 className="text-xl font-bold text-left mb-2 mt-4">
           Choose a Category
         </h2>
         
