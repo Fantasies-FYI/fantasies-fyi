@@ -50,7 +50,7 @@ const FantasyCard = ({
 
   return (
     <Card 
-      className={`w-full mb-6 ${isAnswered ? 'opacity-90' : 'opacity-100'} transition-opacity shadow-md border-0`}
+      className={`w-full mb-6 ${isAnswered ? 'opacity-50' : 'opacity-100'} transition-opacity shadow-md border-0`}
       style={{
         backgroundColor: categoryColors.background,
         color: "#FFFFFF",
