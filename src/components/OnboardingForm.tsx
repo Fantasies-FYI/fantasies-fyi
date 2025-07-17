@@ -193,7 +193,8 @@ const OnboardingForm = ({
         <Label>Partner's Gender</Label>
         <RadioGroup value={profile.partnerGender} onValueChange={value => setProfile({
         ...profile,
-        partnerGender: value as "male" | "female"
+        partnerGender: value as "male" | "female",
+        gender: value === "male" ? "female" : "male"
       })}>
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="male" id="partner-male" />
