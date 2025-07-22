@@ -96,6 +96,30 @@ const InfoPage = ({ onClose, onReset }: InfoPageProps) => {
       
       <Card className="mb-6 border-0 shadow-md">
         <CardHeader>
+          <CardTitle className="text-xl">Contact & Feedback</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <p>
+            We'd love to hear from you! Whether you have feedback, suggestions for improvement, 
+            or you're interested in joining us to further develop this project, please don't hesitate to reach out.
+          </p>
+          <p>
+            Your input helps us make Fantasies FYI better for everyone, and we're always looking for 
+            passionate contributors who want to help enhance the experience for couples everywhere.
+          </p>
+          
+          <div className="flex justify-center mt-4">
+            <Button asChild>
+              <a href="mailto:contact@fantasies.fyi?subject=Feedback about Fantasies FYI">
+                Contact Us
+              </a>
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+      
+      <Card className="mb-6 border-0 shadow-md">
+        <CardHeader>
           <CardTitle className="text-xl text-red-500">Reset All Answers</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
