@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Fantasy, UserAnswer, getCategoryColors, categoryData } from "@/data/sampleFantasies";
+import { Fantasy, UserAnswer, getCategoryColors } from "@/data/sampleFantasies";
 import { getUserProfile } from "@/utils/storage";
 import { Badge } from "@/components/ui/badge";
 
@@ -67,13 +67,7 @@ const ResultsView = ({
             You have {sharedFantasies.length} shared fantasies across {Object.keys(groupedFantasies).length} categories:
           </p>
           
-          {Object.entries(groupedFantasies)
-            .sort(([a], [b]) => {
-              const aIndex = categoryData.findIndex(cat => cat.name === a);
-              const bIndex = categoryData.findIndex(cat => cat.name === b);
-              return aIndex - bIndex;
-            })
-            .map(([category, fantasies]) => (
+          {Object.entries(groupedFantasies).map(([category, fantasies]) => (
             <div key={category} className="mb-8">
               <h3 className="text-xl font-semibold mb-4">{category}</h3>
               
