@@ -142,7 +142,7 @@ const sampleFantasies: Fantasy[] = [
     "fantasy": {
       "male": "Enjoy longer teasing and foreplay sessions with {partnerName}",
       "female": "Enjoy longer teasing and foreplay sessions with {partnerName}",
-      "result": "Enjoy longer teasing and foreplay sessions"
+      "result": "Enjoy longer teasing and foreplay sessions together"
     }
   },
   {
@@ -151,7 +151,7 @@ const sampleFantasies: Fantasy[] = [
     "fantasy": {
       "male": "Have a steamy phone sex session with {partnerName}",
       "female": "Have a steamy phone sex session with {partnerName}",
-      "result": "Have a steamy phone sex session"
+      "result": "Have a steamy phone sex session together"
     }
   },
   {
@@ -178,7 +178,7 @@ const sampleFantasies: Fantasy[] = [
     "fantasy": {
       "male": "Let {partnerName} slowly strip me completely",
       "female": "Slowly strip {partnerName} completely",
-      "result": "Slowly strip {partnerName} completely"
+      "result": "Slowly strip {myName} completely"
     }
   },
   {
