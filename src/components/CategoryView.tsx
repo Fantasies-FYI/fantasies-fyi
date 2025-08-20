@@ -3,6 +3,7 @@ import React from "react";
 import CategoryGrid from "@/components/CategoryGrid";
 import { FantasyCategory, categoryData } from "@/data/sampleFantasies";
 import FloatingMenu from "@/components/FloatingMenu";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 interface CategoryViewProps {
   categories: FantasyCategory[];
@@ -46,11 +47,13 @@ const CategoryView = ({
         </h2>
         
         {allQuestionsAnswered ? (
-          <p className="text-left mb-6 text-green-600">
-            Du hast alle Fragen beantwortet! Du kannst nun deine Ergebnisse teilen.
-          </p>
+          <Alert className="mb-6">
+            <AlertDescription>
+              You have answered all questions! You can now share your results.
+            </AlertDescription>
+          </Alert>
         ) : (
-          <p className="text-left mb-6 text-gray-600">
+          <p className="text-left mb-6 text-muted-foreground">
             Please answer all questions to see the results.
           </p>
         )}
