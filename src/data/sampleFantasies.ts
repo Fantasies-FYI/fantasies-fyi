@@ -1193,8 +1193,8 @@ const sampleFantasies: Fantasy[] = [
     "id": 118,
     "category": "Group",
     "fantasy": {
-      "male": "Let another person, people, or couples watch us have sex with {partnerName}",
-      "female": "Let another person, people, or couples watch us have sex with {partnerName}",
+      "male": "Let another person, people, or couples watch us have sex",
+      "female": "Let another person, people, or couples watch us have sex",
       "result": "Let others watch us partner have sex"
     }
   },
