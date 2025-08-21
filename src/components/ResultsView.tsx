@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Fantasy, UserAnswer, getCategoryColors } from "@/data/sampleFantasies";
 import { getUserProfile } from "@/utils/storage";
 import { Badge } from "@/components/ui/badge";
+import { ExtendedUserProfile } from "@/types/user";
 
 interface ResultsViewProps {
   sharedFantasies: Fantasy[];
@@ -18,11 +19,31 @@ const ResultsView = ({
   partnerAnswers,
   partnerName 
 }: ResultsViewProps) => {
-  const profile = getUserProfile();
+  const profile = getUserProfile() as ExtendedUserProfile;
   
   if (!profile) {
     return <div>User profile not found</div>;
   }
+  
+  const replaceNameVariables = (text: string): string => {
+    let result = text.replace(/\{partnerName\}/g, profile.partnerName);
+    
+    // Replace {femaleName} with appropriate name
+    if (profile.gender === "female") {
+      result = result.replace(/\{femaleName\}/g, profile.name);
+    } else if (profile.partnerGender === "female") {
+      result = result.replace(/\{femaleName\}/g, profile.partnerName);
+    }
+    
+    // Replace {maleName} with appropriate name
+    if (profile.gender === "male") {
+      result = result.replace(/\{maleName\}/g, profile.name);
+    } else if (profile.partnerGender === "male") {
+      result = result.replace(/\{maleName\}/g, profile.partnerName);
+    }
+    
+    return result;
+  };
   
   const getUserAnswer = (fantasyId: number): string => {
     const answer = userAnswers.find(a => a.fantasyId === fantasyId)?.answer;
@@ -84,7 +105,7 @@ const ResultsView = ({
                     }}
                   >
                     <CardContent className="pt-6 pb-2">
-                      <p className="text-lg text-white text-center mb-4">{fantasy.fantasy.result}</p>
+                      <p className="text-lg text-white text-center mb-4">{replaceNameVariables(fantasy.fantasy.result)}</p>
                     </CardContent>
                     <CardHeader className="pt-0">
                       <CardDescription className="text-white flex justify-between items-center">
