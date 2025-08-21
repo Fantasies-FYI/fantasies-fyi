@@ -47,10 +47,10 @@ const Debug = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6">Debug - Answer Comparison</h1>
+        <h1 className="text-3xl font-bold mb-6">Debug</h1>
         
         {profile && (
-          <Card className="mb-6">
+          <Card className="mb-6 border-0">
             <CardHeader>
               <CardTitle>User Profile</CardTitle>
             </CardHeader>
@@ -85,7 +85,7 @@ const Debug = () => {
             const partnerAnswer = getPartnerAnswer(fantasy.id);
             
             return (
-              <Card key={fantasy.id}>
+              <Card key={fantasy.id} className="border-0">
                 <CardHeader>
                   <div className="flex justify-between items-start">
                     <div className="flex-1">
@@ -124,7 +124,7 @@ const Debug = () => {
 
                     {/* Result Text */}
                     {fantasy.fantasy.result && (
-                      <div className="pt-2 border-t">
+                      <div className="pt-2">
                         <p className="font-medium mb-2">Result Text:</p>
                         <p className="text-sm text-muted-foreground">
                           {fantasy.fantasy.result}
